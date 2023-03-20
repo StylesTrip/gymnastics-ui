@@ -6,14 +6,14 @@ export default function AppBar() {
     return (
         <>
             <nav className="bg-primary-purple p-2">
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center gap-x-5">
                     <Image
-                        src="/hand-spring.png"
+                        src="/gymnast.png"
                         alt="image of figure doing gymnastics on floor"
                         width={90}
                         height={90}
                     />
-                    <div className="text-white text-3xl min-w-0 md:min-w-fit">
+                    <div className="text-primary-app-bar text-3xl min-w-0 md:min-w-fit">
                         Emma's Gymnastics
                     </div>
                 </div>
@@ -23,7 +23,7 @@ export default function AppBar() {
                     <ul className="flex flex-row">
                         <li>
                             <a
-                                className="block py-2 pl-3 pr-4 text-white text-base rounded hover:underline"
+                                className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
                                 href="/"
                             >
                                 Home
@@ -31,7 +31,7 @@ export default function AppBar() {
                         </li>
                         <li>
                             <a
-                                className="block py-2 pl-3 pr-4 text-white text-base rounded hover:underline"
+                                className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
                                 href="/scores"
                             >
                                 Scores
@@ -39,7 +39,7 @@ export default function AppBar() {
                         </li>
                         <li>
                             <a
-                                className="block py-2 pl-3 pr-4 text-white text-base rounded hover:underline"
+                                className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
                                 href="/scores"
                             >
                                 Videos
