@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Home() {
     return (
-        <section>
+        <section className="h-screen">
             <div
                 className="relative overflow-hidden bg-no-repeat bg-cover"
                 style={{
@@ -18,7 +18,7 @@ export default function Home() {
                     Emma Turinsky
                 </h1>
             </div>
-            <div className="bg-primary-purple h-screen p-4">
+            <div className="bg-primary-purple p-4">
                 <div className="shadow-lg grid grid-cols-1 md:grid-cols-2 gap-2">
                     <div className="text-center p-2">
                         <div className="shadow-lg rounded-md bg-secondary-purple text-secondary-app-bar mb-2 py-1">
