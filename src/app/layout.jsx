@@ -1,5 +1,4 @@
 import './globals.css';
-import Image from 'next/image';
 import AppBar from '@/components/appbar/AppBar';
 
 export default function RootLayout({ children }) {
@@ -10,7 +9,7 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
             <head />
-            <body>
+            <body className="bg-primary-purple">
                 <AppBar />
                 {children}
             </body>
