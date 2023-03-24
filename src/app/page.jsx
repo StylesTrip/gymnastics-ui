@@ -1,7 +1,7 @@
 import './globals.css';
 import bgPicture from '../../public/emma2.jpeg';
 import Image from 'next/image';
-import Link from 'next/Link';
+import Link from 'next/link';
 
 export default function Home() {
     return (
@@ -48,17 +48,13 @@ export default function Home() {
                             </h6>
                             <dl className="mb-2">
                                 <dt className="font-bold">Derby Classic:</dt>
-                                <dd>
-                                    1st - Vault, Bars, Floor, AA
-                                </dd>
+                                <dd>1st - Vault, Bars, Floor, AA</dd>
                             </dl>
                             <dl className="mb-2">
                                 <dt className="font-bold">
                                     Blaine Wilson Sportsfest:
                                 </dt>
-                                <dd>
-                                    1st - Vault, Bars, Floor, AA
-                                </dd>
+                                <dd>1st - Vault, Bars, Floor, AA</dd>
                             </dl>
                             <dl className="mb-2">
                                 <dt className="font-bold">Buckeye Classic:</dt>
@@ -74,7 +70,10 @@ export default function Home() {
                                 <dt className="font-bold">Cowtown Classic:</dt>
                                 <dd>1st - Bars</dd>
                             </dl>
-                            <Link href="/scores" className="underline text-lg hover:decoration-4">
+                            <Link
+                                href="/scores"
+                                className="underline text-lg hover:decoration-4"
+                            >
                                 View All Scores
                             </Link>
                         </div>
