@@ -1,5 +1,5 @@
 import './globals.css';
-import bgPicture from '../../public/emma2.jpeg';
+import bgPicture from '../../public/emma2-new.jpeg';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <section className="h-screen">
             <div
-                className="relative overflow-hidden bg-no-repeat bg-cover"
+                className="relative overflow-hidden bg-no-repeat bg-auto md:bg-cover"
                 style={{
                     backgroundPosition: '70%',
                     backgroundImage: `url(${bgPicture.src})`,
@@ -19,7 +19,7 @@ export default function Home() {
                 </h1>
             </div>
             <div className="bg-primary-purple p-4">
-                <div className="shadow-lg grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     <div className="text-center p-2">
                         <div className="shadow-lg rounded-md bg-secondary-purple text-secondary-app-bar mb-2 py-1">
                             <h6 className="mb-3 font-bold text-xl">
