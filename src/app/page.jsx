@@ -3,6 +3,10 @@ import bgPicture from '../../public/emma2-new.jpeg';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const metadata = {
+    title: "Emma's Gymnastics",
+};
+
 export default function Home() {
     return (
         <section className="h-screen">
