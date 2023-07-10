@@ -1,6 +1,10 @@
 import { Suspense } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 
+export const metadata = {
+    title: "Scores",
+};
+
 async function getScores() {
     let { data, error } = await supabase
         .from('scores')

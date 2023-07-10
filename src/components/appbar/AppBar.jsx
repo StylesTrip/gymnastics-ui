@@ -40,7 +40,7 @@ export default function AppBar() {
                         <li>
                             <a
                                 className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
-                                href="/scores"
+                                href="/videos"
                             >
                                 Videos
                             </a>
