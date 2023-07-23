@@ -5,7 +5,11 @@ export default function Page() {
     return (
         <>
             <h1 className="text-3xl font-bold text-center">Level 3 Videos</h1>
-            <section className="flex flex-col items-center mt-4">
+            <section className="h-full flex flex-col gap-4 items-center mt-4">
+                <YouTube videoId="jrfjylVxZGc" />
+                <YouTube videoId="6AxvvHqAQpk" />
+                <YouTube videoId="8hYMKJgFWS4" />
+                <YouTube videoId="xmVCA--gT30" />
                 <YouTube videoId="RgnQ5lIc5pI" />
             </section>
         </>

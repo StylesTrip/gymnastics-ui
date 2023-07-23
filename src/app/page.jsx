@@ -15,7 +15,7 @@ export default function Home() {
                 style={{
                     backgroundPosition: '70%',
                     backgroundImage: `url(${bgPicture.src})`,
-                    height: '650px;',
+                    height: '650px',
                 }}
             >
                 <h1 className="mt-14 text-center text-primary-app-bar text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight">
@@ -31,7 +31,7 @@ export default function Home() {
                             </h6>
                             <dl className="mb-2">
                                 <dt className="font-bold">Current Level:</dt>
-                                <dd>3</dd>
+                                <dd>4</dd>
                             </dl>
                             <dl className="mb-2">
                                 <dt className="font-bold">Gym:</dt>
