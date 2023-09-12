@@ -1,6 +1,6 @@
+import { TableOfContents } from '@/components/table-contents/TableOfContents';
 import { PersonalBestTable } from '@/components/tables/PersonalBestTable';
 import { ScoresTable } from '@/components/tables/ScoresTable';
-import { Suspense } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 
 export const metadata = {
@@ -21,16 +21,56 @@ export default async function Page({}) {
     const scores = await getScores();
 
     return (
-        <div className="w-screen h-full md:h-screen bg-white p-4">
-            <h1 className="text-3xl font-bold text-center">Level 3</h1>
-            <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                <h2 className="text-2xl font-bold text-start">Personal Best</h2>
-                <PersonalBestTable scores={scores} />
-            </section>
-            <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                <h2 className="text-2xl font-bold text-start">Scores</h2>
-                <ScoresTable scores={scores} />
-            </section>
+        <div className="grid md:grid-cols-6 gap-2">
+            <TableOfContents />
+            <div className="col-span-5">
+                <h2 id="lvl3-scores" className="text-2xl font-bold text-center">
+                    Level 3
+                </h2>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl3-personal-best"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Personal Best
+                    </h3>
+                    <PersonalBestTable scores={scores} />
+                </section>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl3-scores"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Results
+                    </h3>
+                    <ScoresTable scores={scores} />
+                </section>
+
+                <h2
+                    id="lvl4-scores"
+                    className="text-2xl font-bold text-center mt-2"
+                >
+                    Level 4
+                </h2>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl4-personal-best"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Personal Best
+                    </h3>
+                    <PersonalBestTable scores={null} />
+                </section>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl4-scores"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Results
+                    </h3>
+                    <ScoresTable scores={null} />
+                </section>
+            </div>
         </div>
     );
 }

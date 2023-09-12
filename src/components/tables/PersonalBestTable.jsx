@@ -8,6 +8,16 @@ export const PersonalBestTable = ({ scores }) => {
             allAroundScore: 0,
         };
 
+        if (!scores) {
+            return (
+                <tr className="bg-white border">
+                    <td colSpan={5} className="border text-center">
+                        Season has not started
+                    </td>
+                </tr>
+            );
+        }
+
         scores.map((score, key) => {
             if (score.vault_score >= highScores.vaultScore)
                 highScores.vaultScore = score.vault_score;
@@ -22,7 +32,7 @@ export const PersonalBestTable = ({ scores }) => {
         });
 
         return (
-            <tr className="bg-black border">
+            <tr className="bg-white border">
                 <td className="border text-center">{highScores.vaultScore}</td>
                 <td className="border text-center">{highScores.barsScore}</td>
                 <td className="border text-center">{highScores.beamScore}</td>

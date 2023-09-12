@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function AppBar() {
     return (
         <>
-            <nav className="bg-primary-purple p-2">
+            {/* <nav className="bg-primary-purple p-2">
                 <div className="flex flex-row items-center gap-x-5">
                     <Image
                         src="/gymnast.png"
@@ -17,7 +17,7 @@ export default function AppBar() {
                         Emma's Gymnastics
                     </div>
                 </div>
-            </nav>
+            </nav> */}
             <nav>
                 <div className="flex flex-col justify-start bg-secondary-purple">
                     <ul className="flex flex-row">
@@ -34,7 +34,7 @@ export default function AppBar() {
                                 className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
                                 href="/scores"
                             >
-                                Scores
+                                Results
                             </a>
                         </li>
                         <li>

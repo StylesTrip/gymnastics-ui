@@ -26,6 +26,47 @@ export const ScoresTable = ({ scores }) => {
         );
     };
 
+    if (!scores) {
+        return (
+            <>
+                <table className="md:hidden table-auto border mb-2">
+                    <thead className="border bg-pink-500">
+                        <tr>
+                            <th colSpan={2} className="border px-4 pt-4">
+                                Competition
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className="text-center">
+                                Season has not started
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table className="hidden md:table table-auto border">
+                    <thead className="border bg-pink-500">
+                        <tr className="border">
+                            <th className="border px-4 pt-4">Competition</th>
+                            <th className="border px-4 pt-4">Vault</th>
+                            <th className="border px-4 pt-4">Uneven Bars</th>
+                            <th className="border px-4 pt-4">Beam</th>
+                            <th className="border px-4 pt-4">Floor</th>
+                            <th className="border px-4 pt-4">All Around</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colSpan={6} className="text-center">
+                                Season has not started
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </>
+        );
+    }
     return (
         <>
             {scores.map((score, key) => {
@@ -33,7 +74,7 @@ export const ScoresTable = ({ scores }) => {
                     <table className="md:hidden table-auto border mb-2">
                         <MobileTableheader score={score} />
                         <tbody>
-                            <tr className="bg-black border" key={score.id}>
+                            <tr className="bg-white border" key={score.id}>
                                 <td className="border text-center">Vault</td>
                                 <td className="border text-center">
                                     {score.vault_score}
@@ -77,7 +118,7 @@ export const ScoresTable = ({ scores }) => {
                             <tr
                                 className={
                                     key % 2 === 0
-                                        ? 'bg-black border'
+                                        ? 'bg-white border'
                                         : 'bg-pink-500 border'
                                 }
                                 key={score.id}
