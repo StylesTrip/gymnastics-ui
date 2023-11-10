@@ -1,6 +1,7 @@
 'use client';
 
 import { useHeadsObserver } from '@/hooks/Observer';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export function TableOfContents() {
@@ -37,18 +38,13 @@ export function TableOfContents() {
             <ul>
                 {headings.map((heading) => (
                     <li className={heading.level >= 3 ? 'm-2' : ''}>
-                        <a
+                        <Link
                             href={`#${heading.id}`}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                document
-                                    .querySelector(`#${heading.id}`)
-                                    .scrollIntoView({ behavior: 'smooth' });
-                            }}
+                            // scroll={false}
                             className={getStylings(heading)}
                         >
                             {heading.text}
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </ul>
