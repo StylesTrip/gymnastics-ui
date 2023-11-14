@@ -74,6 +74,7 @@ export default function Home() {
                         <div className="shadow-lg rounded-md bg-secondary-purple text-secondary-app-bar mb-2">
                             <img
                                 src={cardPic.src}
+                                alt="Picture of Emma throwing powder in the air"
                                 className="w-full rounded-t-md"
                             />
                             <h6 className="mb-3 font-bold text-xl">
@@ -101,6 +102,7 @@ export default function Home() {
                         <div className="shadow-lg rounded-md bg-secondary-purple text-secondary-app-bar mb-2 text-center">
                             <img
                                 src={cardPic2.src}
+                                alt="Picture of Emma posing with arms in the air"
                                 className="w-full rounded-t-md"
                             />
                             <h6 className="mb-3 font-bold text-xl">

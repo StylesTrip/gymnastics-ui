@@ -14,7 +14,6 @@ async function getScores() {
             `id, vault_score, bars_score, beam_score, floor_score, all_around_score, competitions(competition_name, level)`
         );
 
-    console.log(data);
     return data;
 }
 
@@ -23,12 +22,11 @@ export default async function Page({}) {
 
     return (
         <div className="bg-white w-full flex flex-col gap-5 md:flex-row">
-            {/* <div className="grid md:grid-cols-6 gap-2"> */}
-            <aside className="p-4 md:block">
+            <aside className="p-2 hidden md:block">
                 <TableOfContents />
             </aside>
-            <div className="col-span-5 min-h-screen">
-                <h2 id="lvl3-scores" className="text-2xl font-bold text-center">
+            <div className="p-2 col-span-5 min-h-screen">
+                <h2 id="lvl3" className="text-2xl font-bold text-center">
                     Level 3
                 </h2>
                 <section className="flex flex-col overflow-x-auto justify-center mt-4">
@@ -38,7 +36,11 @@ export default async function Page({}) {
                     >
                         Personal Best
                     </h3>
-                    <PersonalBestTable scores={scores} />
+                    <PersonalBestTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 3
+                        )}
+                    />
                 </section>
                 <section className="flex flex-col overflow-x-auto justify-center mt-4">
                     <h3
@@ -47,13 +49,14 @@ export default async function Page({}) {
                     >
                         Results
                     </h3>
-                    <ScoresTable scores={scores} />
+                    <ScoresTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 3
+                        )}
+                    />
                 </section>
 
-                <h2
-                    id="lvl4-scores"
-                    className="text-2xl font-bold text-center mt-2"
-                >
+                <h2 id="lvl4" className="text-2xl font-bold text-center mt-2">
                     Level 4
                 </h2>
                 <section className="flex flex-col overflow-x-auto justify-center mt-4">
@@ -63,7 +66,11 @@ export default async function Page({}) {
                     >
                         Personal Best
                     </h3>
-                    <PersonalBestTable scores={null} />
+                    <PersonalBestTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 4
+                        )}
+                    />
                 </section>
                 <section className="flex flex-col overflow-x-auto justify-center mt-4">
                     <h3
@@ -72,35 +79,13 @@ export default async function Page({}) {
                     >
                         Results
                     </h3>
-                    <ScoresTable scores={null} />
-                </section>
-
-                <h2
-                    id="lvl5-scores"
-                    className="text-2xl font-bold text-center mt-2"
-                >
-                    Level 5
-                </h2>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl5-personal-best"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Personal Best
-                    </h3>
-                    <PersonalBestTable scores={null} />
-                </section>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl5-scores"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Results
-                    </h3>
-                    <ScoresTable scores={null} />
+                    <ScoresTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 4
+                        )}
+                    />
                 </section>
             </div>
-            {/* </div> */}
         </div>
     );
 }

@@ -37,7 +37,10 @@ export function TableOfContents() {
         <nav className="sticky top-0">
             <ul>
                 {headings.map((heading) => (
-                    <li className={heading.level >= 3 ? 'm-2' : ''}>
+                    <li
+                        key={heading.id}
+                        className={heading.level >= 3 ? 'm-2' : ''}
+                    >
                         <Link
                             href={`#${heading.id}`}
                             // scroll={false}
