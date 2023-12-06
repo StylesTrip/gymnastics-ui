@@ -75,7 +75,7 @@ export default function Home() {
                             <img
                                 src={cardPic.src}
                                 alt="Picture of Emma throwing powder in the air"
-                                className="w-full rounded-t-md"
+                                className="w-full rounded-t-md grayscale hover:grayscale-0"
                             />
                             <h6 className="mb-3 font-bold text-xl">
                                 Personal Information
@@ -103,7 +103,7 @@ export default function Home() {
                             <img
                                 src={cardPic2.src}
                                 alt="Picture of Emma posing with arms in the air"
-                                className="w-full rounded-t-md"
+                                className="w-full rounded-t-md grayscale hover:grayscale-0"
                             />
                             <h6 className="mb-3 font-bold text-xl">
                                 Achievements
@@ -142,7 +142,7 @@ export default function Home() {
                                 href="/scores"
                                 className="underline text-lg hover:decoration-4"
                             >
-                                View All Scores
+                                View All Results
                             </Link>
                         </div>
                     </div>

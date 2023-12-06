@@ -13,19 +13,21 @@ async function getScores() {
         .select(
             `id, vault_score, bars_score, beam_score, floor_score, all_around_score, competitions(competition_name, level)`
         );
-
     return data;
 }
+
+// Below line is needed via -> https://supabase.com/blog/fetching-and-caching-supabase-data-in-next-js-server-components
+export const revalidate = 3600;
 
 export default async function Page({}) {
     const scores = await getScores();
 
     return (
-        <div className="bg-white w-full flex flex-col gap-5 md:flex-row">
-            <aside className="p-2 hidden md:block">
+        <div className="bg-white w-full flex flex-col gap-4 md:flex-row p-4">
+            <aside className="hidden md:block">
                 <TableOfContents />
             </aside>
-            <div className="p-2 col-span-5 min-h-screen">
+            <div className="col-span-5 min-h-screen grow">
                 <h2 id="lvl3" className="text-2xl font-bold text-center">
                     Level 3
                 </h2>
