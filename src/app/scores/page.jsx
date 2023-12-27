@@ -58,7 +58,7 @@ export default async function Page({}) {
                     />
                 </section>
 
-                <h2 id="lvl4" className="text-2xl font-bold text-center mt-2">
+                <h2 id="lvl4" className="text-2xl font-bold text-center mt-4">
                     Level 4
                 </h2>
                 <section className="flex flex-col overflow-x-auto justify-center mt-4">

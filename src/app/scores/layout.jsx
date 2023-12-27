@@ -9,7 +9,6 @@ export default function ScoresLayout({
     return (
         <>
             <AppBar />
-            {/* <section className="h-screen w-screen bg-white p-4"></section> */}
             {children}
         </>
     );
