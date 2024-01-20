@@ -9,7 +9,7 @@ export default function VideosLayout({
 }) {
     return (
         <>
-            <AppBar />
+            <AppBar variant="filled" />
             <section className="w-screen h-full bg-white p-4">
                 {children}
             </section>

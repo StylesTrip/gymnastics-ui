@@ -1,5 +1,4 @@
 import './globals.css';
-// import bgPicture from '../../public/emma2-new.jpeg';
 import bgPicture from '../../public/Emma-Jump-copy.png';
 import cardPic from '../../public/emma1 copy.jpeg';
 import cardPic2 from '../../public/emma4 copy.jpeg';
@@ -8,7 +7,7 @@ import Link from 'next/link';
 import AppBar from '@/components/appbar/AppBar';
 
 export const metadata = {
-    title: "Emma's Gymnastics",
+    title: "Emma Turinsky - Gymnast Web Page",
 };
 
 export default function Home() {
@@ -112,16 +111,6 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
-                    {/* <div className="p-2">
-                        <Image
-                            src="/emma4-new.jpeg"
-                            alt="Picture of Emma"
-                            width="0"
-                            height="0"
-                            sizes="50vw"
-                            className="w-full h-auto"
-                        />
-                    </div> */}
                 </div>
             </div>
         </section>
