@@ -15,15 +15,7 @@ export default function Home() {
     return (
         <section>
             <div style={{ position: 'relative' }}>
-                <div
-                    style={{
-                        position: 'absolute',
-                        left: 0,
-                        top: 0,
-                        width: '100%',
-                        backgroundColor: 'transparent',
-                    }}
-                >
+                <div className="absolute left-0 top-0 w-full">
                     <AppBar />
                 </div>
                 <img

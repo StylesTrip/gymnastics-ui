@@ -5,7 +5,7 @@ const MenuItem = ({ href, children }) => {
     return (
         <li>
             <a
-                className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
+                className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline focus:outline-none focus-visible:outline-3 focus-visible:outline-black focus-visible:-outline-offset-4"
                 href={href}
             >
                 {children}
