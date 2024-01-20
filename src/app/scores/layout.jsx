@@ -8,7 +8,7 @@ export default function ScoresLayout({
 }) {
     return (
         <>
-            <AppBar />
+            <AppBar variant="filled" />
             {children}
         </>
     );

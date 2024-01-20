@@ -5,6 +5,7 @@ import cardPic from '../../public/emma1 copy.jpeg';
 import cardPic2 from '../../public/emma4 copy.jpeg';
 import Image from 'next/image';
 import Link from 'next/link';
+import AppBar from '@/components/appbar/AppBar';
 
 export const metadata = {
     title: "Emma's Gymnastics",
@@ -14,7 +15,7 @@ export default function Home() {
     return (
         <section>
             <div style={{ position: 'relative' }}>
-                <nav
+                <div
                     style={{
                         position: 'absolute',
                         left: 0,
@@ -23,35 +24,8 @@ export default function Home() {
                         backgroundColor: 'transparent',
                     }}
                 >
-                    <div className="flex flex-col">
-                        <ul className="flex flex-row justify-start">
-                            <li>
-                                <a
-                                    className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
-                                    href="/"
-                                >
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
-                                    href="/scores"
-                                >
-                                    Results
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    className="block py-2 pl-3 pr-4 text-secondary-app-bar text-base rounded hover:underline"
-                                    href="/videos"
-                                >
-                                    Videos
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                    <AppBar />
+                </div>
                 <img
                     src={bgPicture.src}
                     alt="Picture of Emma doing a jump split"
@@ -69,7 +43,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="p-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-[repeat(2,minmax(0,500px))] justify-evenly gap-2">
                     <div className="text-center p-2">
                         <div className="shadow-lg rounded-md bg-secondary-purple text-secondary-app-bar mb-2">
                             <img
