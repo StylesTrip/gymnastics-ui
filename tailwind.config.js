@@ -18,6 +18,7 @@ module.exports = {
             // 'app-bar': '#189AB4',
             'secondary-app-bar': '#1B1734',
             'primary-app-bar': '#17C4BD',
+            'primary-app-background': '#2D3032',
             pink: colors.pink,
             white: colors.white,
             gray: colors.gray,

@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
             <head />
-            <body className="bg-black">
+            <body className="bg-primary-app-background">
                 {/* <AppBar /> */}
                 {children}
             </body>

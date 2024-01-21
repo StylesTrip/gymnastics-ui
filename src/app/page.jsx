@@ -7,7 +7,7 @@ import Link from 'next/link';
 import AppBar from '@/components/appbar/AppBar';
 
 export const metadata = {
-    title: "Emma Turinsky - Gymnast Web Page",
+    title: 'Emma Turinsky - Gymnast Web Page',
 };
 
 export default function Home() {
@@ -36,7 +36,7 @@ export default function Home() {
             <div className="p-4">
                 <div className="grid grid-cols-1 md:grid-cols-[repeat(2,minmax(0,500px))] justify-evenly gap-2">
                     <div className="text-center p-2">
-                        <div className="shadow-lg rounded-md bg-secondary-purple text-secondary-app-bar mb-2">
+                        <div className="shadow-lg rounded-md bg-primary-app-background border-2 border-secondary-purple text-white mb-2 text-center">
                             <img
                                 src={cardPic.src}
                                 alt="Picture of Emma throwing powder in the air"
@@ -64,7 +64,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="text-center p-2">
-                        <div className="shadow-lg rounded-md bg-secondary-purple text-secondary-app-bar mb-2 text-center">
+                        <div className="shadow-lg rounded-md bg-primary-app-background border-2 border-secondary-purple text-white mb-2 text-center">
                             <img
                                 src={cardPic2.src}
                                 alt="Picture of Emma posing with arms in the air"
