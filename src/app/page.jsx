@@ -34,7 +34,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="p-4">
-                <div className="grid grid-cols-1 md:grid-cols-[repeat(2,minmax(0,500px))] justify-evenly gap-2">
+                <div className="grid grid-cols-[1_minmax(0,0.9fr)] md:grid-cols-[repeat(2,minmax(0,500px))] justify-evenly gap-2">
                     <div className="text-center p-2">
                         <div className="shadow-lg rounded-md bg-primary-app-background border-2 border-secondary-purple text-white mb-2 text-center">
                             <img
@@ -75,6 +75,12 @@ export default function Home() {
                             </h6>
                             <dl className="mb-2">
                                 <dt className="font-bold">
+                                    2024 Level 4 Winter Extravaganza:
+                                </dt>
+                                <dd>1st - Beam, 2nd - Bars, Floor, AA</dd>
+                            </dl>
+                            <dl className="mb-2">
+                                <dt className="font-bold">
                                     2023 Level 3 Derby Classic:
                                 </dt>
                                 <dd>1st - Vault, Bars, Floor, AA</dd>
@@ -84,24 +90,6 @@ export default function Home() {
                                     2023 Level 3 Blaine Wilson Sportsfest:
                                 </dt>
                                 <dd>1st - Vault, Bars, Floor, AA</dd>
-                            </dl>
-                            <dl className="mb-2">
-                                <dt className="font-bold">
-                                    2023 Level 3 Buckeye Classic:
-                                </dt>
-                                <dd>1st - Vault, 2nd - Bars</dd>
-                            </dl>
-                            <dl className="mb-2">
-                                <dt className="font-bold">
-                                    2023 Level 3 Battle of Champions:
-                                </dt>
-                                <dd>1st - Vault, 2nd - Bars, Floor</dd>
-                            </dl>
-                            <dl className="mb-2">
-                                <dt className="font-bold">
-                                    2023 Level 3 Cowtown Classic:
-                                </dt>
-                                <dd>1st - Bars</dd>
                             </dl>
                             <Link
                                 href="/scores"
