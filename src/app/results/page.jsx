@@ -4,7 +4,7 @@ import { ScoresTable } from '@/components/tables/ScoresTable';
 import { supabase } from '../../lib/supabaseClient';
 
 export const metadata = {
-    title: 'Scores',
+    title: 'Results',
 };
 
 async function getScores() {

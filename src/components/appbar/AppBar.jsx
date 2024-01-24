@@ -29,7 +29,7 @@ export default function AppBar({ variant = 'transparent' }) {
             <div className="flex flex-col">
                 <ul className="flex flex-row justify-start">
                     <MenuItem href="/">Home</MenuItem>
-                    <MenuItem href="/scores">Results</MenuItem>
+                    <MenuItem href="/results">Results</MenuItem>
                     <MenuItem href="/videos">Videos</MenuItem>
                 </ul>
             </div>

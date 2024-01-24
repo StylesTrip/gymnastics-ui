@@ -92,7 +92,7 @@ export default function Home() {
                                 <dd>1st - Vault, Bars, Floor, AA</dd>
                             </dl>
                             <Link
-                                href="/scores"
+                                href="/results"
                                 className="underline text-lg hover:decoration-4"
                             >
                                 View All Results

@@ -3,7 +3,7 @@ export const metadata = {
     title: 'Results',
 };
 
-export default function ScoresLayout({
+export default function ResultsLayout({
     children, // will be a page or nested layout
 }) {
     return (
