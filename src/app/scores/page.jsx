@@ -23,7 +23,7 @@ export default async function Page({}) {
     const scores = await getScores();
 
     return (
-        <div className="bg-white w-full flex flex-col gap-4 md:flex-row p-4">
+        <div className="w-full flex flex-col gap-4 md:flex-row p-4 text-white">
             <aside className="hidden md:block">
                 <TableOfContents />
             </aside>

@@ -24,7 +24,7 @@ export function TableOfContents() {
 
         if (activeId === heading.id) {
             if (heading.level >= 3) {
-                classNames += 'border-l-4 border-pink-500';
+                classNames += 'border-l-4 border-secondary-purple';
             } else {
                 classNames += 'font-bold';
             }

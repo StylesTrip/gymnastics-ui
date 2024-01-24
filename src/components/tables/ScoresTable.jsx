@@ -1,8 +1,8 @@
 export const ScoresTable = ({ scores }) => {
     const TableHeader = () => {
         return (
-            <thead className="border bg-pink-500">
-                <tr className="border">
+            <thead className="border bg-primary-table-header-background">
+                <tr className="border text-black">
                     <th className="border px-4 pt-4">Competition</th>
                     <th className="border px-4 pt-4">Vault</th>
                     <th className="border px-4 pt-4">Uneven Bars</th>
@@ -16,9 +16,9 @@ export const ScoresTable = ({ scores }) => {
 
     const MobileTableheader = ({ score }) => {
         return (
-            <thead className="border bg-pink-500">
+            <thead className="border bg-primary-table-header-background">
                 <tr>
-                    <th colSpan={2} className="border px-4 pt-4">
+                    <th colSpan={2} className="border px-4 pt-4 text-black">
                         {score.competitions.competition_name}
                     </th>
                 </tr>
@@ -30,7 +30,7 @@ export const ScoresTable = ({ scores }) => {
         return (
             <>
                 <table className="md:hidden table-auto border mb-2">
-                    <thead className="border bg-pink-500">
+                    <thead className="border bg-white">
                         <tr>
                             <th colSpan={2} className="border px-4 pt-4">
                                 Competition
@@ -46,7 +46,7 @@ export const ScoresTable = ({ scores }) => {
                     </tbody>
                 </table>
                 <table className="hidden md:table table-auto border">
-                    <thead className="border bg-pink-500">
+                    <thead className="border bg-white">
                         <tr className="border">
                             <th className="border px-4 pt-4">Competition</th>
                             <th className="border px-4 pt-4">Vault</th>
@@ -73,8 +73,8 @@ export const ScoresTable = ({ scores }) => {
                 return (
                     <table className="md:hidden table-auto border mb-2">
                         <MobileTableheader score={score} />
-                        <tbody>
-                            <tr className="bg-white border" key={score.id}>
+                        <tbody className="bg-white text-black">
+                            <tr className="border text-black" key={score.id}>
                                 <td className="border text-center">Vault</td>
                                 <td className="border text-center">
                                     {score.vault_score}
@@ -112,14 +112,14 @@ export const ScoresTable = ({ scores }) => {
             })}
             <table className="hidden md:table table-auto border">
                 <TableHeader />
-                <tbody className="border">
+                <tbody className="border text-black">
                     {scores.map((score, key) => {
                         return (
                             <tr
                                 className={
                                     key % 2 === 0
                                         ? 'bg-white border'
-                                        : 'bg-pink-500 border'
+                                        : 'bg-white border'
                                 }
                                 key={score.id}
                             >
