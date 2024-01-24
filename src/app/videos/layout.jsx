@@ -10,7 +10,7 @@ export default function VideosLayout({
     return (
         <>
             <AppBar variant="filled" />
-            <section className="w-screen h-full bg-white p-4">
+            <section className="w-screen h-full p-4 text-white">
                 {children}
             </section>
         </>
