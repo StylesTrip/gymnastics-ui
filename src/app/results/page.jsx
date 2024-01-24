@@ -4,7 +4,7 @@ import { ScoresTable } from '@/components/tables/ScoresTable';
 import { supabase } from '../../lib/supabaseClient';
 
 export const metadata = {
-    title: 'Scores',
+    title: 'Results',
 };
 
 async function getScores() {
@@ -23,42 +23,9 @@ export default async function Page({}) {
     const scores = await getScores();
 
     return (
-        <div className="bg-white w-full flex flex-col gap-4 md:flex-row p-4">
-            <aside className="hidden md:block">
-                <TableOfContents />
-            </aside>
+        <div className="w-full flex flex-col gap-4 md:flex-row p-4 text-white">
             <div className="col-span-5 min-h-screen grow">
-                <h2 id="lvl3" className="text-2xl font-bold text-center">
-                    Level 3
-                </h2>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl3-personal-best"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Personal Best
-                    </h3>
-                    <PersonalBestTable
-                        scores={scores.filter(
-                            (score) => score.competitions.level === 3
-                        )}
-                    />
-                </section>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl3-scores"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Results
-                    </h3>
-                    <ScoresTable
-                        scores={scores.filter(
-                            (score) => score.competitions.level === 3
-                        )}
-                    />
-                </section>
-
-                <h2 id="lvl4" className="text-2xl font-bold text-center mt-4">
+                <h2 id="lvl4" className="text-2xl font-bold text-center">
                     Level 4
                 </h2>
                 <section className="flex flex-col overflow-x-auto justify-center mt-4">
@@ -87,7 +54,41 @@ export default async function Page({}) {
                         )}
                     />
                 </section>
+
+                <h2 id="lvl3" className="text-2xl font-bold text-center mt-4">
+                    Level 3
+                </h2>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl3-personal-best"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Personal Best
+                    </h3>
+                    <PersonalBestTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 3
+                        )}
+                    />
+                </section>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl3-scores"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Results
+                    </h3>
+                    <ScoresTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 3
+                        )}
+                    />
+                </section>
             </div>
+
+            <aside className="hidden md:block">
+                <TableOfContents />
+            </aside>
         </div>
     );
 }

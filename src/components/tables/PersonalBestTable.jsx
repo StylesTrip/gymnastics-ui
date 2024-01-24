@@ -32,7 +32,7 @@ export const PersonalBestTable = ({ scores }) => {
         });
 
         return (
-            <tr className="bg-white border">
+            <tr className="bg-white border text-black">
                 <td className="border text-center">{highScores.vaultScore}</td>
                 <td className="border text-center">{highScores.barsScore}</td>
                 <td className="border text-center">{highScores.beamScore}</td>
@@ -46,8 +46,8 @@ export const PersonalBestTable = ({ scores }) => {
 
     return (
         <table className="table-auto border">
-            <thead className="border bg-pink-500">
-                <tr className="border">
+            <thead className="border bg-primary-table-header-background">
+                <tr className="border text-black">
                     <th className="border px-4 pt-4">Vault</th>
                     <th className="border px-4 pt-4">Uneven Bars</th>
                     <th className="border px-4 pt-4">Beam</th>
