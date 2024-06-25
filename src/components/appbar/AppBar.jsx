@@ -20,7 +20,11 @@ export default function AppBar({ variant = 'transparent' }) {
                 <a
                     className={clsx(
                         'block py-2 pl-3 pr-4 text-base rounded hover:underline hover:font-normal focus:outline-none focus-visible:outline-3 focus-visible:outline-black focus-visible:-outline-offset-4',
-                        variant === 'filled' && 'text-white'
+                        variant === 'filled' && 'text-white',
+                        {
+                            ['focus-visible:outline-white']:
+                                pathname === href && variant === 'filled',
+                        }
                     )}
                     href={href}
                 >
