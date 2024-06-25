@@ -1,13 +1,25 @@
+'use client';
+
 import clsx from 'clsx';
 import '../../app/globals.css';
+import { usePathname } from 'next/navigation';
 
 export default function AppBar({ variant = 'transparent' }) {
+    const pathname = usePathname();
+
     const MenuItem = ({ href, children }) => {
         return (
-            <li>
+            <li
+                className={clsx({
+                    ['underline font-bold']: pathname === href,
+                    ['bg-primary-app-background']:
+                        pathname === href && variant === 'filled',
+                })}
+                href="/"
+            >
                 <a
                     className={clsx(
-                        'block py-2 pl-3 pr-4 text-base rounded hover:underline focus:outline-none focus-visible:outline-3 focus-visible:outline-black focus-visible:-outline-offset-4',
+                        'block py-2 pl-3 pr-4 text-base rounded hover:underline hover:font-normal focus:outline-none focus-visible:outline-3 focus-visible:outline-black focus-visible:-outline-offset-4',
                         variant === 'filled' && 'text-white'
                     )}
                     href={href}
