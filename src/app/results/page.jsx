@@ -25,7 +25,37 @@ export default async function Page({}) {
     return (
         <div className="w-full flex flex-col gap-4 md:flex-row p-4 text-white">
             <div className="col-span-5 min-h-screen grow">
-                <h2 id="lvl4" className="text-2xl font-bold text-center">
+                <h2 id="lvl6" className="text-2xl font-bold text-center">
+                    Level 6
+                </h2>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl6-personal-best"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Personal Best
+                    </h3>
+                    <PersonalBestTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 6
+                        )}
+                    />
+                </section>
+                <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                    <h3
+                        id="lvl6-scores"
+                        className="text-2xl font-bold text-start mb-1"
+                    >
+                        Results
+                    </h3>
+                    <ScoresTable
+                        scores={scores.filter(
+                            (score) => score.competitions.level === 6
+                        )}
+                    />
+                </section>
+
+                <h2 id="lvl4" className="text-2xl font-bold text-center mt-4">
                     Level 4
                 </h2>
                 <section className="flex flex-col overflow-x-auto justify-center mt-4">

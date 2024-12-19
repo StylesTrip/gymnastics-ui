@@ -2,7 +2,6 @@ import './globals.css';
 import bgPicture from '../../public/Emma-Jump-copy.png';
 import cardPic from '../../public/emma1 copy.jpeg';
 import cardPic2 from '../../public/emma4 copy.jpeg';
-import Image from 'next/image';
 import Link from 'next/link';
 import AppBar from '@/components/appbar/AppBar';
 
@@ -47,7 +46,7 @@ export default function Home() {
                             </h6>
                             <dl className="mb-2">
                                 <dt className="font-bold">Current Level:</dt>
-                                <dd>4</dd>
+                                <dd>6</dd>
                             </dl>
                             <dl className="mb-2">
                                 <dt className="font-bold">Gym:</dt>
