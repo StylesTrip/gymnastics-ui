@@ -22,68 +22,49 @@ export const revalidate = 3600;
 export default async function Page({}) {
     const scores = await getScores();
 
+    const levels = [
+        ...new Set(scores.map((score) => score.competitions.level)),
+    ];
+
     return (
         <div className="w-full flex flex-col gap-4 md:flex-row p-4 text-white">
             <div className="col-span-5 min-h-screen grow">
-                <h2 id="lvl4" className="text-2xl font-bold text-center">
-                    Level 4
-                </h2>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl4-personal-best"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Personal Best
-                    </h3>
-                    <PersonalBestTable
-                        scores={scores.filter(
-                            (score) => score.competitions.level === 4
-                        )}
-                    />
-                </section>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl4-scores"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Results
-                    </h3>
-                    <ScoresTable
-                        scores={scores.filter(
-                            (score) => score.competitions.level === 4
-                        )}
-                    />
-                </section>
-
-                <h2 id="lvl3" className="text-2xl font-bold text-center mt-4">
-                    Level 3
-                </h2>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl3-personal-best"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Personal Best
-                    </h3>
-                    <PersonalBestTable
-                        scores={scores.filter(
-                            (score) => score.competitions.level === 3
-                        )}
-                    />
-                </section>
-                <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                    <h3
-                        id="lvl3-scores"
-                        className="text-2xl font-bold text-start mb-1"
-                    >
-                        Results
-                    </h3>
-                    <ScoresTable
-                        scores={scores.filter(
-                            (score) => score.competitions.level === 3
-                        )}
-                    />
-                </section>
+                {levels.reverse().map((level) => (
+                    <>
+                        <h2
+                            id={'lvl' + level}
+                            className="text-2xl font-bold text-center"
+                        >
+                            Level {level}
+                        </h2>
+                        <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                            <h3
+                                id={'lvl' + level + '-personal-best'}
+                                className="text-2xl font-bold text-start mb-1"
+                            >
+                                Personal Best
+                            </h3>
+                            <PersonalBestTable
+                                scores={scores.filter(
+                                    (score) => score.competitions.level === 6
+                                )}
+                            />
+                        </section>
+                        <section className="flex flex-col overflow-x-auto justify-center mt-4">
+                            <h3
+                                id={'lvl' + level + '-results'}
+                                className="text-2xl font-bold text-start mb-1"
+                            >
+                                Results
+                            </h3>
+                            <ScoresTable
+                                scores={scores.filter(
+                                    (score) => score.competitions.level === 6
+                                )}
+                            />
+                        </section>
+                    </>
+                ))}
             </div>
 
             <aside className="hidden md:block">
