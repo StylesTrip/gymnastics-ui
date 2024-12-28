@@ -27,8 +27,8 @@ export default async function Page({}) {
     ];
 
     return (
-        <div className="w-full flex flex-col gap-4 md:flex-row p-4 text-white">
-            <div className="col-span-5 min-h-screen grow">
+        <div className="w-full flex flex-col gap-4 md:flex-row py-4 px-6 text-white">
+            <div className="min-h-screen grow px-4">
                 {levels.reverse().map((level) => (
                     <div className="mt-4">
                         <h2
