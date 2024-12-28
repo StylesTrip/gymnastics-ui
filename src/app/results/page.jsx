@@ -27,10 +27,10 @@ export default async function Page({}) {
     ];
 
     return (
-        <div className="w-full flex flex-col gap-4 md:flex-row p-4 text-white">
-            <div className="col-span-5 min-h-screen grow">
+        <div className="w-full flex flex-col gap-4 md:flex-row py-4 px-6 text-white">
+            <div className="min-h-screen grow px-4">
                 {levels.reverse().map((level) => (
-                    <>
+                    <div className="mt-4">
                         <h2
                             id={'lvl' + level}
                             className="text-2xl font-bold text-center"
@@ -46,7 +46,8 @@ export default async function Page({}) {
                             </h3>
                             <PersonalBestTable
                                 scores={scores.filter(
-                                    (score) => score.competitions.level === 6
+                                    (score) =>
+                                        score.competitions.level === level
                                 )}
                             />
                         </section>
@@ -59,11 +60,12 @@ export default async function Page({}) {
                             </h3>
                             <ScoresTable
                                 scores={scores.filter(
-                                    (score) => score.competitions.level === 6
+                                    (score) =>
+                                        score.competitions.level === level
                                 )}
                             />
                         </section>
-                    </>
+                    </div>
                 ))}
             </div>
 
