@@ -6,7 +6,7 @@ import Link from 'next/link';
 import AppBar from '@/components/appbar/AppBar';
 
 export const metadata = {
-    title: 'Emma Turinsky - Gymnast Web Page',
+    title: 'Emma Turinsky - Gymnast Profile',
 };
 
 export default function Home() {
@@ -46,7 +46,7 @@ export default function Home() {
                             </h6>
                             <dl className="mb-2">
                                 <dt className="font-bold">Current Level:</dt>
-                                <dd>6</dd>
+                                <dd>7</dd>
                             </dl>
                             <dl className="mb-2">
                                 <dt className="font-bold">Gym:</dt>
@@ -74,21 +74,13 @@ export default function Home() {
                             </h6>
                             <dl className="mb-2">
                                 <dt className="font-bold">
-                                    2024 Level 4 Winter Extravaganza:
+                                    2026 Level 7 Blaine Wilson Sportsfest:
                                 </dt>
-                                <dd>1st - Beam, 2nd - Bars, Floor, AA</dd>
-                            </dl>
-                            <dl className="mb-2">
+                                <dd>2nd - Vault, Bars</dd>
                                 <dt className="font-bold">
-                                    2023 Level 3 Derby Classic:
+                                    2025 Level 6 X-Treme Challenge:
                                 </dt>
-                                <dd>1st - Vault, Bars, Floor, AA</dd>
-                            </dl>
-                            <dl className="mb-2">
-                                <dt className="font-bold">
-                                    2023 Level 3 Blaine Wilson Sportsfest:
-                                </dt>
-                                <dd>1st - Vault, Bars, Floor, AA</dd>
+                                <dd>1st - Vault, Beam, AA 2nd - Bars</dd>
                             </dl>
                             <Link
                                 href="/results"

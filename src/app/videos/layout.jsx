@@ -1,7 +1,7 @@
 import AppBar from '@/components/appbar/AppBar';
 
 export const metadata = {
-    title: 'Videos',
+    title: 'Videos - Emma Turinsky',
 };
 
 export default function VideosLayout({

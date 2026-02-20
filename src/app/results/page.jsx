@@ -4,7 +4,7 @@ import { ScoresTable } from '@/components/tables/ScoresTable';
 import { supabase } from '../../lib/supabaseClient';
 
 export const metadata = {
-    title: 'Results',
+    title: 'Competition Results - Emma Turinsky',
 };
 
 async function getScores() {
@@ -27,7 +27,7 @@ export default async function Page({}) {
         <div className="w-full flex flex-col gap-4 md:flex-row py-4 px-6 text-white">
             <div className="min-h-screen grow px-4">
                 {levels.reverse().map((level) => (
-                    <div className="mt-4">
+                    <div className="mt-4" key={level}>
                         <h2
                             id={'lvl' + level}
                             className="text-2xl font-bold text-center"
