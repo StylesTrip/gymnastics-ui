@@ -16,9 +16,6 @@ async function getScores() {
     return data;
 }
 
-// Below line is needed via -> https://supabase.com/blog/fetching-and-caching-supabase-data-in-next-js-server-components
-export const revalidate = 3600;
-
 export default async function Page({}) {
     const scores = await getScores();
 
