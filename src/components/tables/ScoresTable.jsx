@@ -71,7 +71,10 @@ export const ScoresTable = ({ scores }) => {
         <>
             {scores.map((score, key) => {
                 return (
-                    <table className="md:hidden table-auto border mb-2">
+                    <table
+                        className="md:hidden table-auto border mb-2"
+                        key={score.id}
+                    >
                         <MobileTableheader score={score} />
                         <tbody className="bg-white text-black">
                             <tr className="border text-black" key={score.id}>
