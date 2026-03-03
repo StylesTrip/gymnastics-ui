@@ -34,9 +34,11 @@ export default function AppBar({
                 <MenuItem href="/results">Results</MenuItem>
                 <MenuItem href="/videos">Videos</MenuItem>
             </ul>
-            <form action="/auth/signout" method="POST">
-                <button type="submit">Sign out</button>
-            </form>
+            {userSignedIn && (
+                <form action="/auth/signout" method="POST">
+                    <button type="submit">Sign out</button>
+                </form>
+            )}
         </nav>
     );
 }
