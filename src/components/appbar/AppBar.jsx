@@ -1,13 +1,16 @@
 import clsx from 'clsx';
 import '../../app/globals.css';
 
-export default function AppBar({ variant = 'transparent' }) {
+export default function AppBar({
+    variant = 'transparent',
+    userSignedIn = false,
+}) {
     const MenuItem = ({ href, children }) => {
         return (
             <li>
                 <a
                     className={clsx(
-                        'block py-2 pl-3 pr-4 text-base rounded hover:underline focus:outline-none focus-visible:outline-3 focus-visible:outline-black focus-visible:-outline-offset-4',
+                        'block text-base rounded hover:underline focus:outline-none focus-visible:outline-3 focus-visible:outline-black focus-visible:-outline-offset-4',
                         variant === 'filled' && 'text-white'
                     )}
                     href={href}
@@ -21,18 +24,19 @@ export default function AppBar({ variant = 'transparent' }) {
     return (
         <nav
             className={clsx(
-                '',
+                'flex justify-between items-center px-4 py-2',
                 variant === 'filled' && 'bg-secondary-purple',
                 variant === 'transparent' && 'bg-transparent'
             )}
         >
-            <div className="flex flex-col">
-                <ul className="flex flex-row justify-start">
-                    <MenuItem href="/">Home</MenuItem>
-                    <MenuItem href="/results">Results</MenuItem>
-                    <MenuItem href="/videos">Videos</MenuItem>
-                </ul>
-            </div>
+            <ul className="flex flex-row justify-start gap-4">
+                <MenuItem href="/">Home</MenuItem>
+                <MenuItem href="/results">Results</MenuItem>
+                <MenuItem href="/videos">Videos</MenuItem>
+            </ul>
+            <form action="/auth/signout" method="POST">
+                <button type="submit">Sign out</button>
+            </form>
         </nav>
     );
 }
