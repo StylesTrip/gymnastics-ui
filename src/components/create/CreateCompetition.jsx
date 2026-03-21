@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client';
 export const CreateCompetition = () => {
     const supabase = createClient();
 
+    // TODO: investigate server actions for this, but for now this is fine since it's only used by admins
     async function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);

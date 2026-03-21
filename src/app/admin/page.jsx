@@ -1,3 +1,4 @@
+import { AddScores } from '@/components/create/AddScores';
 import { CreateCompetition } from '@/components/create/CreateCompetition';
 import { createClient } from '@/lib/supabase/server';
 
@@ -13,9 +14,10 @@ export default async function AdminPage() {
         return <div>Unauthorized</div>;
     }
     return (
-        <main className="p-4">
+        <main className="p-4 flex flex-col gap-4">
             <h1 className="text-2xl font-bold">Admin Dashboard</h1>
             <CreateCompetition />
+            <AddScores />
         </main>
     );
 }
