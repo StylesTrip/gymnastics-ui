@@ -35,6 +35,12 @@ export const AddScores = () => {
     };
 
     const onCompetitionSelect = (event) => {
+
+        if (event.target.value === '') {
+            setSelectedCompetitionScores(null);
+            return;
+        }
+
         setIsLoading(true);
         supabase
             .from('scores')
@@ -49,7 +55,6 @@ export const AddScores = () => {
                         error
                     );
                 }
-                console.log('Scores for selected competition:', data);
 
                 if (data.length > 0) {
                     setSelectedCompetitionScores(data[0]);
@@ -80,7 +85,6 @@ export const AddScores = () => {
     }
 
     const onScoreChange = (event, scoreType) => {
-        console.log(event)
         if (!validateScore(event.target.value)) {
             setErrors({...errors, [scoreType]: true});
         } else {
@@ -93,10 +97,30 @@ export const AddScores = () => {
         });
     }
 
+    async function onSubmitScores(event) {
+        event.preventDefault();
+
+        if (Object.values(errors).some((error) => error === true)) {
+            return;
+        }
+
+        const formData = new FormData(event.currentTarget);
+
+        const { error } = await supabase.from('scores').insert({competition_id: formData.get('competition'), vault_score: formData.get('vault-score'), bars_score: formData.get('bars-score'), beam_score: formData.get('beam-score'), floor_score: formData.get('floor-score'), all_around_score: formData.get('all-around-score')})
+
+        // TODO: Proper message in UI
+        if (error) {
+            console.error('Error submitting scores:', error);
+        } else {
+            console.log('Scores submitted successfully');
+        }
+    }
+
     return (
-        <section className="p-4 bg-white rounded-2xl shadow flex flex-col gap-1">
+        <section className="p-4 bg-white rounded-2xl shadow">
             <h2 className="text-xl font-semibold">Add Scores</h2>
 
+        <form className="flex flex-col gap-1" onSubmit={onSubmitScores}>
             <label className="font-bold" htmlFor="level">Level</label>
             <select
                 id="level"
@@ -139,22 +163,24 @@ export const AddScores = () => {
             {competitions.length > 0 && selectedCompetitionScores && !isLoading && (
                 <div className="flex flex-col gap-1">
                     <label className="font-bold" htmlFor="vault-score">Vault Score</label>
-                    <input className="border border-black p-1" id="vault-score" aria-describedby="vault-score-error" type="number" value={selectedCompetitionScores.vault_score} onChange={(e) => onScoreChange(e, 'vault_score')}  min={0} max={10.0} step={0.025}/>
+                    <input className="border border-black p-1" id="vault-score" name="vault-score" aria-describedby="vault-score-error" type="number" value={selectedCompetitionScores.vault_score} onChange={(e) => onScoreChange(e, 'vault_score')}  min={0} max={10.0} step={0.025}/>
                     {errors.vault_score && <span id="vault-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
                     <label className="font-bold" htmlFor="bars-score">Bars Score</label>
-                    <input className="border border-black p-1" id="bars-score" aria-describedby="bars-score-error" type="number" value={selectedCompetitionScores.bars_score} onChange={(e) => onScoreChange(e, 'bars_score')}  min={0} max={10.0} step={0.025}/>
+                    <input className="border border-black p-1" id="bars-score" name="bars-score" aria-describedby="bars-score-error" type="number" value={selectedCompetitionScores.bars_score} onChange={(e) => onScoreChange(e, 'bars_score')}  min={0} max={10.0} step={0.025}/>
                     {errors.bars_score && <span id="bars-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
                     <label className="font-bold" htmlFor="beam-score">Beam Score</label>
-                    <input className="border border-black p-1" id="beam-score" aria-describedby="beam-score-error" type="number" value={selectedCompetitionScores.beam_score} onChange={(e) => onScoreChange(e, 'beam_score')}  min={0} max={10.0} step={0.025}/>
+                    <input className="border border-black p-1" id="beam-score" name="beam-score" aria-describedby="beam-score-error" type="number" value={selectedCompetitionScores.beam_score} onChange={(e) => onScoreChange(e, 'beam_score')}  min={0} max={10.0} step={0.025}/>
                     {errors.beam_score && <span id="beam-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
                     <label className="font-bold" htmlFor="floor-score">Floor Score</label>
-                    <input className="border border-black p-1" id="floor-score" aria-describedby="floor-score-error" type="number" value={selectedCompetitionScores.floor_score} onChange={(e) => onScoreChange(e, 'floor_score')}  min={0} max={10.0} step={0.025}/>
+                    <input className="border border-black p-1" id="floor-score" name="floor-score" aria-describedby="floor-score-error" type="number" value={selectedCompetitionScores.floor_score} onChange={(e) => onScoreChange(e, 'floor_score')}  min={0} max={10.0} step={0.025}/>
                     {errors.floor_score && <span id="floor-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
                     <label className="font-bold" htmlFor="all-around-score">All-Around Score</label>
-                    <input className="border border-black p-1" id="all-around-score" aria-describedby="all-around-score-error" type="number" value={selectedCompetitionScores.all_around_score} onChange={(e) => onScoreChange(e, 'all_around_score')}  min={0} max={40.0} step={0.025}/>
+                    <input className="border border-black p-1" id="all-around-score" name="all-around-score" aria-describedby="all-around-score-error" type="number" value={selectedCompetitionScores.all_around_score} onChange={(e) => onScoreChange(e, 'all_around_score')}  min={0} max={40.0} step={0.025}/>
                     {errors.all_around_score && <span id="all-around-score-error" className="text-sm">Please enter a valid score between 0 and 40.</span>}
                 </div>
             )}
+            <button type="submit" className="border-2 border-black">Submit</button>
+        </form>
         </section>
     );
 };
