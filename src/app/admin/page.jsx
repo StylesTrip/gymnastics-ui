@@ -15,7 +15,7 @@ export default async function AdminPage() {
     }
     return (
         <main className="p-4 flex flex-col gap-4">
-            <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+            <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
             <CreateCompetition />
             <AddScores />
         </main>
