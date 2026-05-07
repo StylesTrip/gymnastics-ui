@@ -130,17 +130,17 @@ export const AddScores = () => {
     }
 
     return (
-        <section className="p-4 bg-white rounded-2xl shadow">
+        <section className="p-4 bg-white rounded-2xl shadow flex flex-col gap-2">
             <h2 className="text-xl font-semibold">Add Scores</h2>
 
-            <form className="flex flex-col gap-1" onSubmit={onSubmitScores}>
+            <form className="flex flex-col gap-2" onSubmit={onSubmitScores}>
                 <label className="font-bold" htmlFor="level">
                     Level
                 </label>
                 <select
                     id="level"
                     name="level"
-                    className="border border-black"
+                    className="border border-black w-[100px]"
                     onChange={onLevelSelect}
                 >
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (

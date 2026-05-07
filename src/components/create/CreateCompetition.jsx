@@ -1,9 +1,11 @@
 'use client';
 
 import { createClient } from '@/lib/supabase/client';
+import { useState } from 'react';
 
 export const CreateCompetition = () => {
     const supabase = createClient();
+    const [response, setResponse] = useState(null);
 
     // TODO: investigate server actions for this, but for now this is fine since it's only used by admins
     async function handleSubmit(event) {
@@ -18,20 +20,21 @@ export const CreateCompetition = () => {
 
         // TODO: handle errors and show success message to user
         if (error) {
+            setResponse('Error creating competition');
             console.error('Error creating competition:', error);
         } else {
-            console.log('Competition created successfully');
+            setResponse('Competition created successfully');
         }
     }
 
     // TODO: form validation, styling, messages
     return (
         <section className="p-4 bg-white rounded-2xl shadow">
+            <div role="alert" className="text-green">
+                {response}
+            </div>
             <h2 className="text-xl font-semibold">Create Competition</h2>
-            <form
-                className="flex flex-col items-start gap-2"
-                onSubmit={handleSubmit}
-            >
+            <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
                 <label htmlFor="competition">Competition name</label>
                 <input
                     id="competition"
@@ -41,7 +44,11 @@ export const CreateCompetition = () => {
                 />
 
                 <label htmlFor="level">Level</label>
-                <select id="level" name="level" className="border border-black">
+                <select
+                    id="level"
+                    name="level"
+                    className="border border-black w-[100px]"
+                >
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (
                         <option key={level} value={level}>
                             {level}
@@ -54,7 +61,7 @@ export const CreateCompetition = () => {
                     id="date"
                     name="date"
                     type="date"
-                    className="border border-black"
+                    className="border border-black w-[200px]"
                 />
                 <button type="submit">Create</button>
             </form>
