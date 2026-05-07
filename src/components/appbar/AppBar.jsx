@@ -36,7 +36,12 @@ export default function AppBar({
             </ul>
             {userSignedIn && (
                 <form action="/auth/signout" method="POST">
-                    <button type="submit">Sign out</button>
+                    <button
+                        type="submit"
+                        className="text-white hover:outline hover:outline-offset-2"
+                    >
+                        Sign out
+                    </button>
                 </form>
             )}
         </nav>
