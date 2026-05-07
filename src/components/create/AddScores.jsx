@@ -6,6 +6,7 @@ import { useState } from 'react';
 export const AddScores = () => {
     const supabase = createClient();
     const [competitions, setCompetitions] = useState([]);
+    const [selectedCompetition, setSelectedCompetition] = useState(null);
     const [selectedCompetitionScores, setSelectedCompetitionScores] =
         useState(null);
     const [errors, setErrors] = useState({vault_score: false,
@@ -18,6 +19,8 @@ export const AddScores = () => {
     // const {error} = await supabase.from('competitions').select('id, competition_name').
 
     const onLevelSelect = (event) => {
+        setSelectedCompetition(null);
+        setSelectedCompetitionScores(null);
         setIsLoading(true);
         const level = event.target.value;
 
@@ -38,10 +41,12 @@ export const AddScores = () => {
 
         if (event.target.value === '') {
             setSelectedCompetitionScores(null);
+            setSelectedCompetition(null);
             return;
         }
 
         setIsLoading(true);
+        setSelectedCompetition(event.target.value);
         supabase
             .from('scores')
             .select(
@@ -158,9 +163,9 @@ export const AddScores = () => {
                 </>
             )}
 
-            {competitions.length > 0 && isLoading && <p>Loading scores...</p>}
+            {selectedCompetition && isLoading && <p>Loading scores...</p>}
 
-            {competitions.length > 0 && selectedCompetitionScores && !isLoading && (
+            {selectedCompetition && selectedCompetitionScores && !isLoading && (
                 <div className="flex flex-col gap-1">
                     <label className="font-bold" htmlFor="vault-score">Vault Score</label>
                     <input className="border border-black p-1" id="vault-score" name="vault-score" aria-describedby="vault-score-error" type="number" value={selectedCompetitionScores.vault_score} onChange={(e) => onScoreChange(e, 'vault_score')}  min={0} max={10.0} step={0.025}/>
