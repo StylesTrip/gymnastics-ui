@@ -9,11 +9,13 @@ export const AddScores = () => {
     const [selectedCompetition, setSelectedCompetition] = useState(null);
     const [selectedCompetitionScores, setSelectedCompetitionScores] =
         useState(null);
-    const [errors, setErrors] = useState({vault_score: false,
-                        bars_score: false,
-                        beam_score: false,
-                        floor_score: false,
-                        all_around_score: false})
+    const [errors, setErrors] = useState({
+        vault_score: false,
+        bars_score: false,
+        beam_score: false,
+        floor_score: false,
+        all_around_score: false,
+    });
     const [isLoading, setIsLoading] = useState(false);
 
     // const {error} = await supabase.from('competitions').select('id, competition_name').
@@ -38,7 +40,6 @@ export const AddScores = () => {
     };
 
     const onCompetitionSelect = (event) => {
-
         if (event.target.value === '') {
             setSelectedCompetitionScores(null);
             setSelectedCompetition(null);
@@ -87,20 +88,20 @@ export const AddScores = () => {
         if (/[a-zA-Z]/.test(score)) return false;
 
         return true;
-    }
+    };
 
     const onScoreChange = (event, scoreType) => {
         if (!validateScore(event.target.value)) {
-            setErrors({...errors, [scoreType]: true});
+            setErrors({ ...errors, [scoreType]: true });
         } else {
-            setErrors({...errors, [scoreType]: false});
+            setErrors({ ...errors, [scoreType]: false });
         }
 
         setSelectedCompetitionScores({
             ...selectedCompetitionScores,
-            [scoreType]: event.target.value
+            [scoreType]: event.target.value,
         });
-    }
+    };
 
     async function onSubmitScores(event) {
         event.preventDefault();
@@ -111,7 +112,14 @@ export const AddScores = () => {
 
         const formData = new FormData(event.currentTarget);
 
-        const { error } = await supabase.from('scores').insert({competition_id: formData.get('competition'), vault_score: formData.get('vault-score'), bars_score: formData.get('bars-score'), beam_score: formData.get('beam-score'), floor_score: formData.get('floor-score'), all_around_score: formData.get('all-around-score')})
+        const { error } = await supabase.from('scores').insert({
+            competition_id: formData.get('competition'),
+            vault_score: formData.get('vault-score'),
+            bars_score: formData.get('bars-score'),
+            beam_score: formData.get('beam-score'),
+            floor_score: formData.get('floor-score'),
+            all_around_score: formData.get('all-around-score'),
+        });
 
         // TODO: Proper message in UI
         if (error) {
@@ -125,67 +133,180 @@ export const AddScores = () => {
         <section className="p-4 bg-white rounded-2xl shadow">
             <h2 className="text-xl font-semibold">Add Scores</h2>
 
-        <form className="flex flex-col gap-1" onSubmit={onSubmitScores}>
-            <label className="font-bold" htmlFor="level">Level</label>
-            <select
-                id="level"
-                name="level"
-                className="border border-black"
-                onChange={onLevelSelect}
-            >
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (
-                    <option key={level} value={level}>
-                        {level}
-                    </option>
-                ))}
-            </select>
+            <form className="flex flex-col gap-1" onSubmit={onSubmitScores}>
+                <label className="font-bold" htmlFor="level">
+                    Level
+                </label>
+                <select
+                    id="level"
+                    name="level"
+                    className="border border-black"
+                    onChange={onLevelSelect}
+                >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (
+                        <option key={level} value={level}>
+                            {level}
+                        </option>
+                    ))}
+                </select>
 
-            {competitions.length === 0 && isLoading && (
-                <p>Loading competitions...</p>
-            )}
+                {competitions.length === 0 && isLoading && (
+                    <p>Loading competitions...</p>
+                )}
 
-            {competitions.length > 0 && (
-                <>
-                    <label className="font-bold" htmlFor="competition">Competition</label>
-                    <select
-                        id="competition"
-                        name="competition"
-                        className="border border-black"
-                        onChange={onCompetitionSelect}
-                    >
-                        <option value="">Select a competition</option>
-                        {competitions.map((comp) => (
-                            <option key={comp.id} value={comp.id}>
-                                {comp.competition_name}
-                            </option>
-                        ))}
-                    </select>
-                </>
-            )}
+                {competitions.length > 0 && (
+                    <>
+                        <label className="font-bold" htmlFor="competition">
+                            Competition
+                        </label>
+                        <select
+                            id="competition"
+                            name="competition"
+                            className="border border-black"
+                            onChange={onCompetitionSelect}
+                        >
+                            <option value="">Select a competition</option>
+                            {competitions.map((comp) => (
+                                <option key={comp.id} value={comp.id}>
+                                    {comp.competition_name}
+                                </option>
+                            ))}
+                        </select>
+                    </>
+                )}
 
-            {selectedCompetition && isLoading && <p>Loading scores...</p>}
+                {selectedCompetition && isLoading && <p>Loading scores...</p>}
 
-            {selectedCompetition && selectedCompetitionScores && !isLoading && (
-                <div className="flex flex-col gap-1">
-                    <label className="font-bold" htmlFor="vault-score">Vault Score</label>
-                    <input className="border border-black p-1" id="vault-score" name="vault-score" aria-describedby="vault-score-error" type="number" value={selectedCompetitionScores.vault_score} onChange={(e) => onScoreChange(e, 'vault_score')}  min={0} max={10.0} step={0.025}/>
-                    {errors.vault_score && <span id="vault-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
-                    <label className="font-bold" htmlFor="bars-score">Bars Score</label>
-                    <input className="border border-black p-1" id="bars-score" name="bars-score" aria-describedby="bars-score-error" type="number" value={selectedCompetitionScores.bars_score} onChange={(e) => onScoreChange(e, 'bars_score')}  min={0} max={10.0} step={0.025}/>
-                    {errors.bars_score && <span id="bars-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
-                    <label className="font-bold" htmlFor="beam-score">Beam Score</label>
-                    <input className="border border-black p-1" id="beam-score" name="beam-score" aria-describedby="beam-score-error" type="number" value={selectedCompetitionScores.beam_score} onChange={(e) => onScoreChange(e, 'beam_score')}  min={0} max={10.0} step={0.025}/>
-                    {errors.beam_score && <span id="beam-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
-                    <label className="font-bold" htmlFor="floor-score">Floor Score</label>
-                    <input className="border border-black p-1" id="floor-score" name="floor-score" aria-describedby="floor-score-error" type="number" value={selectedCompetitionScores.floor_score} onChange={(e) => onScoreChange(e, 'floor_score')}  min={0} max={10.0} step={0.025}/>
-                    {errors.floor_score && <span id="floor-score-error" className="text-sm">Please enter a valid score between 0 and 10.</span>}
-                    <label className="font-bold" htmlFor="all-around-score">All-Around Score</label>
-                    <input className="border border-black p-1" id="all-around-score" name="all-around-score" aria-describedby="all-around-score-error" type="number" value={selectedCompetitionScores.all_around_score} onChange={(e) => onScoreChange(e, 'all_around_score')}  min={0} max={40.0} step={0.025}/>
-                    {errors.all_around_score && <span id="all-around-score-error" className="text-sm">Please enter a valid score between 0 and 40.</span>}
-                </div>
-            )}
-            <button type="submit" className="border-2 border-black">Submit</button>
-        </form>
+                {selectedCompetition &&
+                    selectedCompetitionScores &&
+                    !isLoading && (
+                        <div className="flex flex-col gap-1">
+                            <label className="font-bold" htmlFor="vault-score">
+                                Vault Score
+                            </label>
+                            <input
+                                className="border border-black p-1"
+                                id="vault-score"
+                                name="vault-score"
+                                aria-describedby="vault-score-error"
+                                type="number"
+                                value={selectedCompetitionScores.vault_score}
+                                onChange={(e) =>
+                                    onScoreChange(e, 'vault_score')
+                                }
+                                min={0}
+                                max={10.0}
+                                step={0.025}
+                            />
+                            {errors.vault_score && (
+                                <span
+                                    id="vault-score-error"
+                                    className="text-sm"
+                                >
+                                    Please enter a valid score between 0 and 10.
+                                </span>
+                            )}
+                            <label className="font-bold" htmlFor="bars-score">
+                                Bars Score
+                            </label>
+                            <input
+                                className="border border-black p-1"
+                                id="bars-score"
+                                name="bars-score"
+                                aria-describedby="bars-score-error"
+                                type="number"
+                                value={selectedCompetitionScores.bars_score}
+                                onChange={(e) => onScoreChange(e, 'bars_score')}
+                                min={0}
+                                max={10.0}
+                                step={0.025}
+                            />
+                            {errors.bars_score && (
+                                <span id="bars-score-error" className="text-sm">
+                                    Please enter a valid score between 0 and 10.
+                                </span>
+                            )}
+                            <label className="font-bold" htmlFor="beam-score">
+                                Beam Score
+                            </label>
+                            <input
+                                className="border border-black p-1"
+                                id="beam-score"
+                                name="beam-score"
+                                aria-describedby="beam-score-error"
+                                type="number"
+                                value={selectedCompetitionScores.beam_score}
+                                onChange={(e) => onScoreChange(e, 'beam_score')}
+                                min={0}
+                                max={10.0}
+                                step={0.025}
+                            />
+                            {errors.beam_score && (
+                                <span id="beam-score-error" className="text-sm">
+                                    Please enter a valid score between 0 and 10.
+                                </span>
+                            )}
+                            <label className="font-bold" htmlFor="floor-score">
+                                Floor Score
+                            </label>
+                            <input
+                                className="border border-black p-1"
+                                id="floor-score"
+                                name="floor-score"
+                                aria-describedby="floor-score-error"
+                                type="number"
+                                value={selectedCompetitionScores.floor_score}
+                                onChange={(e) =>
+                                    onScoreChange(e, 'floor_score')
+                                }
+                                min={0}
+                                max={10.0}
+                                step={0.025}
+                            />
+                            {errors.floor_score && (
+                                <span
+                                    id="floor-score-error"
+                                    className="text-sm"
+                                >
+                                    Please enter a valid score between 0 and 10.
+                                </span>
+                            )}
+                            <label
+                                className="font-bold"
+                                htmlFor="all-around-score"
+                            >
+                                All-Around Score
+                            </label>
+                            <input
+                                className="border border-black p-1"
+                                id="all-around-score"
+                                name="all-around-score"
+                                aria-describedby="all-around-score-error"
+                                type="number"
+                                value={
+                                    selectedCompetitionScores.all_around_score
+                                }
+                                onChange={(e) =>
+                                    onScoreChange(e, 'all_around_score')
+                                }
+                                min={0}
+                                max={40.0}
+                                step={0.025}
+                            />
+                            {errors.all_around_score && (
+                                <span
+                                    id="all-around-score-error"
+                                    className="text-sm"
+                                >
+                                    Please enter a valid score between 0 and 40.
+                                </span>
+                            )}
+                        </div>
+                    )}
+                <button type="submit" className="border-2 border-black">
+                    Submit
+                </button>
+            </form>
         </section>
     );
 };
