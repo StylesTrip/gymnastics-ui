@@ -22,6 +22,7 @@ module.exports = {
             'primary-table-header-background': '#D2D3D3',
             pink: colors.pink,
             red: colors.red,
+            green: colors.green,
             white: colors.white,
             gray: colors.gray,
             black: colors.black,

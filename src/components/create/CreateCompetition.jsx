@@ -21,8 +21,14 @@ export const CreateCompetition = () => {
         if (formErrors.name || formErrors.level || formErrors.date) {
             setResponse('Please fix form errors before submitting');
             return;
-        } else if (formData.get('competition').trim() === '' || formData.get('level') === '' || formData.get('date') === '') {
-            setResponse('Please fill out all required fields before submitting');
+        } else if (
+            formData.get('competition').trim() === '' ||
+            formData.get('level') === '' ||
+            formData.get('date') === ''
+        ) {
+            setResponse(
+                'Please fill out all required fields before submitting'
+            );
             return;
         }
 
@@ -51,24 +57,23 @@ export const CreateCompetition = () => {
             competition_date: formData.get('date'),
         });
 
-        // TODO: handle errors and show success message to user
         if (error) {
-            setResponse('Error creating competition');
+            setResponse('Error creating competition. Try again later.');
             console.error('Error creating competition:', error);
         } else {
             setResponse('Competition created successfully');
         }
     }
 
-    // TODO: form validation, styling, messages
+    //TODO: Successful competition creation should not be red error message
     return (
-        <section className="p-4 bg-white rounded-2xl shadow flex flex-col gap-2">
+        <section className="p-4 bg-white rounded-2xl shadow flex flex-col gap-2 w-full max-w-4xl">
             {response && (
                 <div
                     role="alert"
                     className={clsx(
-                        'text-red-600',
-                        response && 'border border-red-500 p-1 rounded-md'
+                        response && response.includes('successfully') && 'text-green-600 border border-green-500 p-1 rounded-md',
+                        response && !response.includes('successfully') && 'text-red-600 border border-red-500 p-1 rounded-md'
                     )}
                 >
                     {response}
