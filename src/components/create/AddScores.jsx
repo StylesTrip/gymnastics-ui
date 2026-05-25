@@ -160,30 +160,31 @@ export const AddScores = () => {
             )}
             <h2 className="text-xl font-semibold">Add Scores</h2>
 
-            <form className="flex flex-col gap-2" onSubmit={onSubmitScores}>
-                <label className="font-bold" htmlFor="level">
-                    Level
-                </label>
-                <select
-                    id="level"
-                    name="level"
-                    className="block border border-black w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                    onChange={onLevelSelect}
-                >
-                    <option value="">Select</option>
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (
-                        <option key={level} value={level}>
-                            {level}
-                        </option>
-                    ))}
-                </select>
-
+            <form className="flex flex-col gap-3" onSubmit={onSubmitScores}>
+                <div className="flex flex-col gap-1">
+                    <label className="font-bold" htmlFor="level">
+                        Level
+                    </label>
+                    <select
+                        id="level"
+                        name="level"
+                        className="block border border-black w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                        onChange={onLevelSelect}
+                    >
+                        <option value="">Select</option>
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (
+                            <option key={level} value={level}>
+                                {level}
+                            </option>
+                        ))}
+                    </select>
+                </div>
                 {competitions.length === 0 && isLoading && (
                     <p>Loading competitions...</p>
                 )}
 
                 {competitions.length > 0 && (
-                    <>
+                    <div className="flex flex-col gap-1">
                         <label className="font-bold" htmlFor="competition">
                             Competition
                         </label>
@@ -200,7 +201,7 @@ export const AddScores = () => {
                                 </option>
                             ))}
                         </select>
-                    </>
+                    </div>
                 )}
 
                 {selectedCompetition && isLoading && <p>Loading scores...</p>}
@@ -208,134 +209,175 @@ export const AddScores = () => {
                 {selectedCompetition &&
                     selectedCompetitionScores &&
                     !isLoading && (
-                        <div className="flex flex-col gap-1">
-                            <label className="font-bold" htmlFor="vault-score">
-                                Vault Score
-                            </label>
-                            <input
-                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                                id="vault-score"
-                                name="vault-score"
-                                aria-describedby="vault-score-error"
-                                type="number"
-                                value={selectedCompetitionScores.vault_score}
-                                onChange={(e) =>
-                                    onScoreChange(e, 'vault_score')
-                                }
-                                min={0}
-                                max={10.0}
-                                step={0.025}
-                            />
-                            {errors.vault_score && (
-                                <span
-                                    id="vault-score-error"
-                                    className="text-sm"
+                        <div className="flex flex-col justify-between gap-3">
+                            <div className="flex flex-col gap-1">
+                                <label
+                                    className="font-bold"
+                                    htmlFor="vault-score"
                                 >
-                                    Please enter a valid score between 0 and 10.
-                                </span>
-                            )}
-                            <label className="font-bold" htmlFor="bars-score">
-                                Bars Score
-                            </label>
-                            <input
-                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                                id="bars-score"
-                                name="bars-score"
-                                aria-describedby="bars-score-error"
-                                type="number"
-                                value={selectedCompetitionScores.bars_score}
-                                onChange={(e) => onScoreChange(e, 'bars_score')}
-                                min={0}
-                                max={10.0}
-                                step={0.025}
-                            />
-                            {errors.bars_score && (
-                                <span id="bars-score-error" className="text-sm">
-                                    Please enter a valid score between 0 and 10.
-                                </span>
-                            )}
-                            <label className="font-bold" htmlFor="beam-score">
-                                Beam Score
-                            </label>
-                            <input
-                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                                id="beam-score"
-                                name="beam-score"
-                                aria-describedby="beam-score-error"
-                                type="number"
-                                value={selectedCompetitionScores.beam_score}
-                                onChange={(e) => onScoreChange(e, 'beam_score')}
-                                min={0}
-                                max={10.0}
-                                step={0.025}
-                            />
-                            {errors.beam_score && (
-                                <span id="beam-score-error" className="text-sm">
-                                    Please enter a valid score between 0 and 10.
-                                </span>
-                            )}
-                            <label className="font-bold" htmlFor="floor-score">
-                                Floor Score
-                            </label>
-                            <input
-                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                                id="floor-score"
-                                name="floor-score"
-                                aria-describedby="floor-score-error"
-                                type="number"
-                                value={selectedCompetitionScores.floor_score}
-                                onChange={(e) =>
-                                    onScoreChange(e, 'floor_score')
-                                }
-                                min={0}
-                                max={10.0}
-                                step={0.025}
-                            />
-                            {errors.floor_score && (
-                                <span
-                                    id="floor-score-error"
-                                    className="text-sm"
+                                    Vault Score
+                                </label>
+                                <input
+                                    className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                                    id="vault-score"
+                                    name="vault-score"
+                                    aria-describedby="vault-score-error"
+                                    type="number"
+                                    value={
+                                        selectedCompetitionScores.vault_score
+                                    }
+                                    onChange={(e) =>
+                                        onScoreChange(e, 'vault_score')
+                                    }
+                                    min={0}
+                                    max={10.0}
+                                    step={0.025}
+                                />
+                                {errors.vault_score && (
+                                    <span
+                                        id="vault-score-error"
+                                        className="text-sm"
+                                    >
+                                        Please enter a valid score between 0 and
+                                        10.
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label
+                                    className="font-bold"
+                                    htmlFor="bars-score"
                                 >
-                                    Please enter a valid score between 0 and 10.
-                                </span>
-                            )}
-                            <label
-                                className="font-bold"
-                                htmlFor="all-around-score"
-                            >
-                                All-Around Score
-                            </label>
-                            <input
-                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                                id="all-around-score"
-                                name="all-around-score"
-                                aria-describedby="all-around-score-error"
-                                type="number"
-                                value={
-                                    selectedCompetitionScores.all_around_score
-                                }
-                                onChange={(e) =>
-                                    onScoreChange(e, 'all_around_score')
-                                }
-                                min={0}
-                                max={40.0}
-                                step={0.025}
-                            />
-                            {errors.all_around_score && (
-                                <span
-                                    id="all-around-score-error"
-                                    className="text-sm"
+                                    Bars Score
+                                </label>
+                                <input
+                                    className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                                    id="bars-score"
+                                    name="bars-score"
+                                    aria-describedby="bars-score-error"
+                                    type="number"
+                                    value={selectedCompetitionScores.bars_score}
+                                    onChange={(e) =>
+                                        onScoreChange(e, 'bars_score')
+                                    }
+                                    min={0}
+                                    max={10.0}
+                                    step={0.025}
+                                />
+                                {errors.bars_score && (
+                                    <span
+                                        id="bars-score-error"
+                                        className="text-sm"
+                                    >
+                                        Please enter a valid score between 0 and
+                                        10.
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label
+                                    className="font-bold"
+                                    htmlFor="beam-score"
                                 >
-                                    Please enter a valid score between 0 and 40.
-                                </span>
-                            )}
+                                    Beam Score
+                                </label>
+                                <input
+                                    className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                                    id="beam-score"
+                                    name="beam-score"
+                                    aria-describedby="beam-score-error"
+                                    type="number"
+                                    value={selectedCompetitionScores.beam_score}
+                                    onChange={(e) =>
+                                        onScoreChange(e, 'beam_score')
+                                    }
+                                    min={0}
+                                    max={10.0}
+                                    step={0.025}
+                                />
+                                {errors.beam_score && (
+                                    <span
+                                        id="beam-score-error"
+                                        className="text-sm"
+                                    >
+                                        Please enter a valid score between 0 and
+                                        10.
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label
+                                    className="font-bold"
+                                    htmlFor="floor-score"
+                                >
+                                    Floor Score
+                                </label>
+                                <input
+                                    className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                                    id="floor-score"
+                                    name="floor-score"
+                                    aria-describedby="floor-score-error"
+                                    type="number"
+                                    value={
+                                        selectedCompetitionScores.floor_score
+                                    }
+                                    onChange={(e) =>
+                                        onScoreChange(e, 'floor_score')
+                                    }
+                                    min={0}
+                                    max={10.0}
+                                    step={0.025}
+                                />
+                                {errors.floor_score && (
+                                    <span
+                                        id="floor-score-error"
+                                        className="text-sm"
+                                    >
+                                        Please enter a valid score between 0 and
+                                        10.
+                                    </span>
+                                )}
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <label
+                                    className="font-bold"
+                                    htmlFor="all-around-score"
+                                >
+                                    All-Around Score
+                                </label>
+                                <input
+                                    className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                                    id="all-around-score"
+                                    name="all-around-score"
+                                    aria-describedby="all-around-score-error"
+                                    type="number"
+                                    value={
+                                        selectedCompetitionScores.all_around_score
+                                    }
+                                    onChange={(e) =>
+                                        onScoreChange(e, 'all_around_score')
+                                    }
+                                    min={0}
+                                    max={40.0}
+                                    step={0.025}
+                                />
+                                {errors.all_around_score && (
+                                    <span
+                                        id="all-around-score-error"
+                                        className="text-sm"
+                                    >
+                                        Please enter a valid score between 0 and
+                                        40.
+                                    </span>
+                                )}
+                            </div>
                         </div>
                     )}
                 <button
                     type="submit"
                     className="border-2 border-black px-2 py-1 rounded-md self-center focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                 >
-                    Submit
+                    Add scores
                 </button>
             </form>
         </section>
