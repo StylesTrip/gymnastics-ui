@@ -19,7 +19,9 @@ export default async function AdminPage() {
             <div className="w-full flex flex-col items-center justify-center">
                 <CreateCompetition />
             </div>
-            <AddScores />
+            <div className="w-full flex flex-col items-center justify-center">
+                <AddScores />
+            </div>
         </main>
     );
 }

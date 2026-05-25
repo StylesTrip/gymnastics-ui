@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/client';
 import { useState } from 'react';
+import clsx from 'clsx';
 
 export const AddScores = () => {
     const supabase = createClient();
@@ -17,6 +18,7 @@ export const AddScores = () => {
         all_around_score: false,
     });
     const [isLoading, setIsLoading] = useState(false);
+    const [response, setResponse] = useState(null);
 
     // const {error} = await supabase.from('competitions').select('id, competition_name').
 
@@ -106,7 +108,15 @@ export const AddScores = () => {
     async function onSubmitScores(event) {
         event.preventDefault();
 
+        if (selectedCompetition === null || selectedCompetition === '') {
+            setResponse(
+                'Please select a level and competition before submitting scores.'
+            );
+            return;
+        }
+
         if (Object.values(errors).some((error) => error === true)) {
+            setResponse('Please fix form errors before submitting.');
             return;
         }
 
@@ -124,13 +134,30 @@ export const AddScores = () => {
         // TODO: Proper message in UI
         if (error) {
             console.error('Error submitting scores:', error);
+            setResponse('Error submitting scores. Try again later.');
         } else {
             console.log('Scores submitted successfully');
+            setResponse('Scores submitted successfully');
         }
     }
 
     return (
-        <section className="p-4 bg-white rounded-2xl shadow flex flex-col gap-2">
+        <section className="p-4 bg-white rounded-2xl shadow flex flex-col gap-2 w-full max-w-4xl">
+            {response && (
+                <div
+                    role="alert"
+                    className={clsx(
+                        response &&
+                            response.includes('successfully') &&
+                            'text-green-600 border border-green-500 p-1 rounded-md',
+                        response &&
+                            !response.includes('successfully') &&
+                            'text-red-600 border border-red-500 p-1 rounded-md'
+                    )}
+                >
+                    {response}
+                </div>
+            )}
             <h2 className="text-xl font-semibold">Add Scores</h2>
 
             <form className="flex flex-col gap-2" onSubmit={onSubmitScores}>
@@ -140,9 +167,10 @@ export const AddScores = () => {
                 <select
                     id="level"
                     name="level"
-                    className="border border-black w-[100px]"
+                    className="block border border-black w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                     onChange={onLevelSelect}
                 >
+                    <option value="">Select</option>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((level) => (
                         <option key={level} value={level}>
                             {level}
@@ -162,7 +190,7 @@ export const AddScores = () => {
                         <select
                             id="competition"
                             name="competition"
-                            className="border border-black"
+                            className="block border border-black w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                             onChange={onCompetitionSelect}
                         >
                             <option value="">Select a competition</option>
@@ -185,7 +213,7 @@ export const AddScores = () => {
                                 Vault Score
                             </label>
                             <input
-                                className="border border-black p-1"
+                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 id="vault-score"
                                 name="vault-score"
                                 aria-describedby="vault-score-error"
@@ -210,7 +238,7 @@ export const AddScores = () => {
                                 Bars Score
                             </label>
                             <input
-                                className="border border-black p-1"
+                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 id="bars-score"
                                 name="bars-score"
                                 aria-describedby="bars-score-error"
@@ -230,7 +258,7 @@ export const AddScores = () => {
                                 Beam Score
                             </label>
                             <input
-                                className="border border-black p-1"
+                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 id="beam-score"
                                 name="beam-score"
                                 aria-describedby="beam-score-error"
@@ -250,7 +278,7 @@ export const AddScores = () => {
                                 Floor Score
                             </label>
                             <input
-                                className="border border-black p-1"
+                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 id="floor-score"
                                 name="floor-score"
                                 aria-describedby="floor-score-error"
@@ -278,7 +306,7 @@ export const AddScores = () => {
                                 All-Around Score
                             </label>
                             <input
-                                className="border border-black p-1"
+                                className="border border-black w-fit p-1 rounded focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                                 id="all-around-score"
                                 name="all-around-score"
                                 aria-describedby="all-around-score-error"
@@ -303,7 +331,10 @@ export const AddScores = () => {
                             )}
                         </div>
                     )}
-                <button type="submit" className="border-2 border-black">
+                <button
+                    type="submit"
+                    className="border-2 border-black px-2 py-1 rounded-md self-center focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                >
                     Submit
                 </button>
             </form>
