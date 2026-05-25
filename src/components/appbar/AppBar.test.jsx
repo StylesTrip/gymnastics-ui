@@ -15,12 +15,26 @@ describe('AppBar', () => {
     it('should render with default transparent background', () => {
         render(<AppBar />);
 
-        expect(screen.getByRole('navigation')).toHaveClass("bg-transparent");
+        expect(screen.getByRole('navigation')).toHaveClass('bg-transparent');
     });
 
     it('should render with filled background when filled prop is passed', () => {
-        render(<AppBar variant='filled' />);
+        render(<AppBar variant="filled" />);
 
-        expect(screen.getByRole('navigation')).toHaveClass("bg-secondary-purple");
-    })
+        expect(screen.getByRole('navigation')).toHaveClass(
+            'bg-secondary-purple'
+        );
+    });
+
+    it('should render sign out button when userSignedIn is true', () => {
+        render(<AppBar userSignedIn />);
+
+        expect(screen.getByText('Sign out')).toBeInTheDocument();
+    });
+
+    it('should not render sign out button when userSignedIn is false', () => {
+        render(<AppBar />);
+
+        expect(screen.queryByText('Sign out')).not.toBeInTheDocument();
+    });
 });
