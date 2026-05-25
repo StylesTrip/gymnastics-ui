@@ -10,7 +10,7 @@ export default function AppBar({
             <li>
                 <a
                     className={clsx(
-                        'block text-base rounded hover:underline focus:outline-none focus-visible:outline-3 focus-visible:outline-black focus-visible:-outline-offset-4',
+                        'block text-base rounded hover:underline focus:outline-none focus-visible:outline-3 focus-visible:outline-black',
                         variant === 'filled' && 'text-white'
                     )}
                     href={href}
