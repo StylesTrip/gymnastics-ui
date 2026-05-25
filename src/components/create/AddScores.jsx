@@ -168,7 +168,7 @@ export const AddScores = () => {
 
             <form className="flex flex-col gap-3" onSubmit={onSubmitScores}>
                 <div className="flex flex-col gap-1">
-                    <label className="font-bold" htmlFor="level">
+                    <label className="font-semibold" htmlFor="level">
                         Level
                     </label>
                     <select
@@ -191,7 +191,7 @@ export const AddScores = () => {
 
                 {competitions.length > 0 && (
                     <div className="flex flex-col gap-1">
-                        <label className="font-bold" htmlFor="competition">
+                        <label className="font-semibold" htmlFor="competition">
                             Competition
                         </label>
                         <select
@@ -218,7 +218,7 @@ export const AddScores = () => {
                         <div className="flex flex-col justify-between gap-3">
                             <div className="flex flex-col gap-1">
                                 <label
-                                    className="font-bold"
+                                    className="font-semibold"
                                     htmlFor="vault-score"
                                 >
                                     Vault Score
@@ -251,7 +251,7 @@ export const AddScores = () => {
                             </div>
                             <div className="flex flex-col gap-1">
                                 <label
-                                    className="font-bold"
+                                    className="font-semibold"
                                     htmlFor="bars-score"
                                 >
                                     Bars Score
@@ -282,7 +282,7 @@ export const AddScores = () => {
                             </div>
                             <div className="flex flex-col gap-1">
                                 <label
-                                    className="font-bold"
+                                    className="font-semibold"
                                     htmlFor="beam-score"
                                 >
                                     Beam Score
@@ -313,7 +313,7 @@ export const AddScores = () => {
                             </div>
                             <div className="flex flex-col gap-1">
                                 <label
-                                    className="font-bold"
+                                    className="font-semibold"
                                     htmlFor="floor-score"
                                 >
                                     Floor Score
@@ -346,7 +346,7 @@ export const AddScores = () => {
                             </div>
                             <div className="flex flex-col gap-1">
                                 <label
-                                    className="font-bold"
+                                    className="font-semibold"
                                     htmlFor="all-around-score"
                                 >
                                     All-Around Score
