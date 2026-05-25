@@ -28,6 +28,12 @@ export const AddScores = () => {
         setIsLoading(true);
         const level = event.target.value;
 
+        if (level === '') {
+            setCompetitions([]);
+            setIsLoading(false);
+            return;
+        }
+
         supabase
             .from('competitions')
             .select('id, competition_name')
