@@ -168,11 +168,11 @@ export const AddScores = () => {
 
             <form className="flex flex-col gap-3" onSubmit={onSubmitScores}>
                 <div className="flex flex-col gap-1">
-                    <label className="font-semibold" htmlFor="level">
+                    <label className="font-semibold" htmlFor="scores-level">
                         Level
                     </label>
                     <select
-                        id="level"
+                        id="scores-level"
                         name="level"
                         className="block border border-black w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                         onChange={onLevelSelect}
@@ -185,9 +185,14 @@ export const AddScores = () => {
                         ))}
                     </select>
                 </div>
-                {competitions.length === 0 && isLoading && (
-                    <p>Loading competitions...</p>
-                )}
+                <p
+                    role="status"
+                    className={clsx(
+                        competitions.length === 0 && isLoading ? '' : 'sr-only'
+                    )}
+                >
+                    Loading competitions...
+                </p>
 
                 {competitions.length > 0 && (
                     <div className="flex flex-col gap-1">
@@ -210,7 +215,14 @@ export const AddScores = () => {
                     </div>
                 )}
 
-                {selectedCompetition && isLoading && <p>Loading scores...</p>}
+                <p
+                    role="status"
+                    className={clsx(
+                        selectedCompetition && isLoading ? '' : 'sr-only'
+                    )}
+                >
+                    Loading scores...
+                </p>
 
                 {selectedCompetition &&
                     selectedCompetitionScores &&
