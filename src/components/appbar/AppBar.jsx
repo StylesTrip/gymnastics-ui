@@ -38,7 +38,7 @@ export default function AppBar({
                 <form action="/auth/signout" method="POST">
                     <button
                         type="submit"
-                        className="text-white hover:outline hover:outline-offset-2"
+                        className="text-white hover:outline hover:outline-offset-2 rounded focus:outline-none focus-visible:outline-3 focus-visible:outline-black"
                     >
                         Sign out
                     </button>
