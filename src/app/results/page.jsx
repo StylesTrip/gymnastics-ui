@@ -5,6 +5,21 @@ import { supabase } from '../../lib/supabaseClient';
 
 export const metadata = {
     title: 'Competition Results - Emma Turinsky',
+    description: "Explore Emma Turinsky's gymnastics competition results, including personal bests and detailed scores for each event.",
+    openGraph: {
+        url: 'https://emmaturinsky.com/results',
+        type: 'website',
+        title: "Emma Turinsky's Competition Results",
+        description: "Explore Emma Turinsky's gymnastics competition results, including personal bests and detailed scores for each event.",
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Emma Turinsky's Competition Results",
+        description: "Explore Emma Turinsky's gymnastics competition results, including personal bests and detailed scores for each event.",
+    },
+    alternates: {
+        canonical: 'https://emmaturinsky.com/results',
+    }
 };
 
 async function getScores() {
