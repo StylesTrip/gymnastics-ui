@@ -5,9 +5,6 @@ import cardPic2 from '../../public/emma4 copy.jpeg';
 import Link from 'next/link';
 import AppBar from '@/components/appbar/AppBar';
 
-export const metadata = {
-    title: 'Emma Turinsky - Gymnast Profile',
-};
 
 export default function Home() {
     return (
