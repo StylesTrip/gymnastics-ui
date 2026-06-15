@@ -30,7 +30,7 @@ export const metadata = {
         googleBot: 'index, follow',
     },
     alternates: {
-        canonical: 'https://emmaturinsky.com',
+        canonical: 'https://emmaturinsky.com/',
     },
     icons: {
         icon: '/gymicon.png',
