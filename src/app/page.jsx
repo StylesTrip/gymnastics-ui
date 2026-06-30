@@ -35,6 +35,7 @@ export default function Home() {
                             Gym X-Treme
                         </a>
                         <p className="text-gray-600">Class of 2032</p>
+                        <p className="text-gray-600">Delaware, OH</p>
                     </div>
 
                     {/* Middle: Highlights */}
@@ -74,7 +75,13 @@ export default function Home() {
                             </h3>
 
                             <p className="mt-2 text-sm text-gray-700">
-                                Parent Email: example@email.com
+                                Parent Email:{' '}
+                                <a
+                                    href="mailto:ryan.turinsky@gmail.com"
+                                    className="underline hover:decoration-2"
+                                >
+                                    ryan.turinsky@gmail.com
+                                </a>
                             </p>
                         </div>
                         <a
@@ -99,14 +106,19 @@ export default function Home() {
                             <Image
                                 src="/emma-res.jpeg"
                                 fill
-                                alt="Results"
+                                sizes="(max-width: 768px) 400px, (max-width: 1200px) 400px, 400px"
+                                alt="Picture of Emma posing with back facing camera"
                                 className="grayscale hover:grayscale-0"
                             />
                         </div>
 
-                        <div className="p-6">
-                            <h2>Results</h2>
-                            <p>Meet scores and highlights</p>
+                        <div className="p-6 flex justify-center">
+                            <Link
+                                href="/results"
+                                className="underline text-lg hover:decoration-2"
+                            >
+                                View All Results
+                            </Link>
                         </div>
                     </div>
                 </div>
