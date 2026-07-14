@@ -19,16 +19,16 @@ export const PersonalBestTable = ({ scores }) => {
         }
 
         scores.map((score, key) => {
-            if (score.vault_score >= highScores.vaultScore)
-                highScores.vaultScore = score.vault_score;
-            if (score.bars_score >= highScores.barsScore)
-                highScores.barsScore = score.bars_score;
-            if (score.beam_score >= highScores.beamScore)
-                highScores.beamScore = score.beam_score;
-            if (score.floor_score >= highScores.floorScore)
-                highScores.floorScore = score.floor_score;
-            if (score.all_around_score >= highScores.allAroundScore)
-                highScores.allAroundScore = score.all_around_score;
+            if (score.scores[0].vault_score >= highScores.vaultScore)
+                highScores.vaultScore = score.scores[0].vault_score;
+            if (score.scores[0].bars_score >= highScores.barsScore)
+                highScores.barsScore = score.scores[0].bars_score;
+            if (score.scores[0].beam_score >= highScores.beamScore)
+                highScores.beamScore = score.scores[0].beam_score;
+            if (score.scores[0].floor_score >= highScores.floorScore)
+                highScores.floorScore = score.scores[0].floor_score;
+            if (score.scores[0].all_around_score >= highScores.allAroundScore)
+                highScores.allAroundScore = score.scores[0].all_around_score;
         });
 
         return (

@@ -19,7 +19,7 @@ export const ScoresTable = ({ scores }) => {
             <thead className="border bg-primary-table-header-background">
                 <tr>
                     <th colSpan={2} className="border px-4 pt-4 text-black">
-                        {score.competitions.competition_name}
+                        {score.competition_name}
                     </th>
                 </tr>
             </thead>
@@ -73,32 +73,32 @@ export const ScoresTable = ({ scores }) => {
                 return (
                     <table
                         className="md:hidden table-auto border mb-2"
-                        key={score.id}
+                        key={key}
                     >
                         <MobileTableheader score={score} />
                         <tbody className="bg-white text-black">
-                            <tr className="border text-black" key={score.id}>
+                            <tr className="border text-black" key={score.competition_name}>
                                 <td className="border text-center">Vault</td>
                                 <td className="border text-center">
-                                    {score.vault_score}
+                                    {score.scores[0].vault_score}
                                 </td>
                             </tr>
                             <tr>
                                 <td className="border text-center">Bars</td>
                                 <td className="border text-center">
-                                    {score.bars_score}
+                                    {score.scores[0].bars_score}
                                 </td>
                             </tr>
                             <tr>
                                 <td className="border text-center">Beam</td>
                                 <td className="border text-center">
-                                    {score.beam_score}
+                                    {score.scores[0].beam_score}
                                 </td>
                             </tr>
                             <tr>
                                 <td className="border text-center">Floor</td>
                                 <td className="border text-center">
-                                    {score.floor_score}
+                                    {score.scores[0].floor_score}
                                 </td>
                             </tr>
                             <tr>
@@ -106,7 +106,7 @@ export const ScoresTable = ({ scores }) => {
                                     All Around
                                 </td>
                                 <td className="border text-center">
-                                    {score.all_around_score}
+                                    {score.scores[0].all_around_score}
                                 </td>
                             </tr>
                         </tbody>
@@ -124,25 +124,25 @@ export const ScoresTable = ({ scores }) => {
                                         ? 'bg-white border'
                                         : 'bg-white border'
                                 }
-                                key={score.id}
+                                key={key}
                             >
                                 <td className="border p-2">
-                                    {score.competitions.competition_name}
+                                    {score.competition_name}
                                 </td>
                                 <td className="border text-center">
-                                    {score.vault_score}
+                                    {score.scores[0].vault_score}
                                 </td>
                                 <td className="border text-center">
-                                    {score.bars_score}
+                                    {score.scores[0].bars_score}
                                 </td>
                                 <td className="border text-center">
-                                    {score.beam_score}
+                                    {score.scores[0].beam_score}
                                 </td>
                                 <td className="border text-center">
-                                    {score.floor_score}
+                                    {score.scores[0].floor_score}
                                 </td>
                                 <td className="border text-center">
-                                    {score.all_around_score}
+                                    {score.scores[0].all_around_score}
                                 </td>
                             </tr>
                         );
