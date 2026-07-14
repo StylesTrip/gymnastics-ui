@@ -2,6 +2,7 @@ import { TableOfContents } from '@/components/table-contents/TableOfContents';
 import { PersonalBestTable } from '@/components/tables/PersonalBestTable';
 import { ScoresTable } from '@/components/tables/ScoresTable';
 import { supabase } from '../../lib/supabaseClient';
+import { ProgressionChart } from '@/components/progression-chart/ProgressionChart';
 
 export const metadata = {
     title: 'Competition Results - Emma Turinsky',
@@ -90,6 +91,7 @@ export default async function Page({ searchParams }) {
                         />
                     </section>
                 </div>
+                <ProgressionChart scores={scores} />
             </div>
 
             {/* <aside className="hidden md:block">
