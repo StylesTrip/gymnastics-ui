@@ -97,20 +97,30 @@ export function ProgressionChart({ scores }) {
     };
 
     return (
-        <div className="w-full h-100 bg-white">
-            <select
-                id="event-select"
-                value={selectedEvent.key}
-                className="text-black block w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
-                onChange={handleEventChange}
-            >
-                {events.map((event) => (
-                    <option key={event.key} value={event.key}>
-                        {event.label}
-                    </option>
-                ))}
-            </select>
+        <div className="w-full h-auto bg-white flex flex-col gap-1 p-2 shadow-md rounded-lg">
+            <div className="flex self-end items-center gap-x-2">
+                <label
+                    className="text-black font-medium"
+                    id="event-label"
+                    htmlFor="event-select"
+                >
+                    Event:
+                </label>
+                <select
+                    id="event-select"
+                    value={selectedEvent.key}
+                    className="text-black block w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                    onChange={handleEventChange}
+                >
+                    {events.map((event) => (
+                        <option key={event.key} value={event.key}>
+                            {event.label}
+                        </option>
+                    ))}
+                </select>
+            </div>
             <Line
+                options={{ responsive: true }}
                 data={getDataToDisplay()}
                 aria-label={`Season progression scores for ${selectedEvent.label}`}
             />

@@ -46,6 +46,7 @@ async function getScores(level) {
     return data;
 }
 
+// TODO: Add unhappy path for when there are no scores for a level. Right now it just shows an empty table.
 export default async function Page({ searchParams }) {
     const queryLevel = (await searchParams).level;
     const level =
@@ -55,48 +56,54 @@ export default async function Page({ searchParams }) {
     const scores = await getScores(level);
 
     return (
-        <div className="w-full flex flex-col gap-4 md:flex-row py-4 px-6 text-white">
-            <div className="min-h-screen grow px-4">
-                <div className="mt-4" key={level}>
-                    <h2
+        <main className="w-full flex flex-col gap-4 py-4 px-6 text-white">
+            <div className="flex flex-col gap-4 py-4 px-6 bg-white rounded-lg">
+                <div className="grow px-4">
+                    <h1
                         id={'lvl' + level}
-                        className="text-2xl font-bold text-center"
+                        className="text-black text-2xl font-bold"
                     >
                         Level {level}
-                    </h2>
-                    <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                        <h3
-                            id={'lvl' + level + '-personal-best'}
-                            className="text-2xl font-bold text-start mb-1"
-                        >
-                            Personal Best
-                        </h3>
-                        <PersonalBestTable
-                            scores={scores.filter(
-                                (score) => score.level === level
-                            )}
-                        />
-                    </section>
-                    <section className="flex flex-col overflow-x-auto justify-center mt-4">
-                        <h3
-                            id={'lvl' + level + '-results'}
-                            className="text-2xl font-bold text-start mb-1"
-                        >
-                            Results
-                        </h3>
-                        <ScoresTable
-                            scores={scores.filter(
-                                (score) => score.level === level
-                            )}
-                        />
-                    </section>
+                    </h1>
+                    <div className="mt-4" key={level}>
+                        <section className="flex flex-col overflow-x-auto justify-center mt-4 shadow-md">
+                            <h3
+                                id={'lvl' + level + '-personal-best'}
+                                className="text-black text-2xl font-bold text-start mb-1"
+                            >
+                                Personal Best
+                            </h3>
+                            <PersonalBestTable
+                                scores={scores.filter(
+                                    (score) => score.level === level
+                                )}
+                            />
+                        </section>
+                        <section className="flex flex-col overflow-x-auto justify-center mt-4 shadow-md">
+                            <h3
+                                id={'lvl' + level + '-results'}
+                                className="text-black text-2xl font-bold text-start mb-1"
+                            >
+                                Results
+                            </h3>
+                            <ScoresTable
+                                scores={scores.filter(
+                                    (score) => score.level === level
+                                )}
+                            />
+                        </section>
+                    </div>
                 </div>
-                <ProgressionChart scores={scores} />
+                <div className="px-4">
+                    <h3
+                        id={'lvl' + level + '-progression'}
+                        className="text-black text-2xl font-bold text-start mb-1"
+                    >
+                        Season Progression
+                    </h3>
+                    <ProgressionChart scores={scores} />
+                </div>
             </div>
-
-            {/* <aside className="hidden md:block">
-                <TableOfContents />
-            </aside> */}
-        </div>
+        </main>
     );
 }
