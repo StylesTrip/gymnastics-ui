@@ -33,11 +33,19 @@ export const PersonalBestTable = ({ scores }) => {
 
         return (
             <tr className="bg-white border text-black">
-                <td className="border text-center">{highScores.vaultScore}</td>
-                <td className="border text-center">{highScores.barsScore}</td>
-                <td className="border text-center">{highScores.beamScore}</td>
-                <td className="border text-center">{highScores.floorScore}</td>
-                <td className="border text-center">
+                <td className="border text-center text-sm p-2">
+                    {highScores.vaultScore}
+                </td>
+                <td className="border text-center text-sm p-2">
+                    {highScores.barsScore}
+                </td>
+                <td className="border text-center text-sm p-2">
+                    {highScores.beamScore}
+                </td>
+                <td className="border text-center text-sm p-2">
+                    {highScores.floorScore}
+                </td>
+                <td className="border text-center text-sm p-2">
                     {highScores.allAroundScore}
                 </td>
             </tr>
@@ -45,17 +53,17 @@ export const PersonalBestTable = ({ scores }) => {
     };
 
     return (
-        <table className="table-auto border">
-            <thead className="border bg-primary-table-header-background">
+        <table className="table-auto w-full">
+            <thead className="bg-primary-table-header-background">
                 <tr className="border text-black">
-                    <th className="border px-4 pt-4">Vault</th>
-                    <th className="border px-4 pt-4">Uneven Bars</th>
-                    <th className="border px-4 pt-4">Beam</th>
-                    <th className="border px-4 pt-4">Floor</th>
-                    <th className="border px-4 pt-4">All Around</th>
+                    <th className="border px-2 pt-2 text-sm">Vault</th>
+                    <th className="border px-2 pt-2 text-sm">Uneven Bars</th>
+                    <th className="border px-2 pt-2 text-sm">Beam</th>
+                    <th className="border px-2 pt-2 text-sm">Floor</th>
+                    <th className="border px-2 pt-2 text-sm">All Around</th>
                 </tr>
             </thead>
-            <tbody className="border">{getHighestScoreForEvent()}</tbody>
+            <tbody className="">{getHighestScoreForEvent()}</tbody>
         </table>
     );
 };
