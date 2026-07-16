@@ -66,10 +66,10 @@ export default async function Page({ searchParams }) {
                         Level {level}
                     </h1>
                     <div className="mt-4" key={level}>
-                        <section className="flex flex-col overflow-x-auto justify-center mt-4 shadow-md">
+                        <section className="flex flex-col overflow-x-auto justify-center mt-4">
                             <h3
                                 id={'lvl' + level + '-personal-best'}
-                                className="text-black text-2xl font-bold text-start mb-1"
+                                className="text-black text-xl font-bold text-start mb-1"
                             >
                                 Personal Best
                             </h3>
@@ -82,7 +82,7 @@ export default async function Page({ searchParams }) {
                         <section className="flex flex-col overflow-x-auto justify-center mt-4 shadow-md">
                             <h3
                                 id={'lvl' + level + '-results'}
-                                className="text-black text-2xl font-bold text-start mb-1"
+                                className="text-black text-xl font-bold text-start mb-1"
                             >
                                 Results
                             </h3>
@@ -97,7 +97,7 @@ export default async function Page({ searchParams }) {
                 <div className="px-4">
                     <h3
                         id={'lvl' + level + '-progression'}
-                        className="text-black text-2xl font-bold text-start mb-1"
+                        className="text-black text-xl font-bold text-start mb-1"
                     >
                         Season Progression
                     </h3>
