@@ -69,9 +69,8 @@ export default async function Page({ searchParams }) {
                 <nav className="bg-white px-2 py-2 rounded-lg">
                     <ul className="flex flex-row gap-4">
                         {levels.map((lvl) => (
-                            <li>
+                            <li key={lvl}>
                                 <Link
-                                    key={lvl}
                                     href={`/results?level=${lvl}`}
                                     className={cslx(
                                         'text-black',
