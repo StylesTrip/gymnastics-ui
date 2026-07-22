@@ -1,8 +1,9 @@
-import { TableOfContents } from '@/components/table-contents/TableOfContents';
 import { PersonalBestTable } from '@/components/tables/PersonalBestTable';
 import { ScoresTable } from '@/components/tables/ScoresTable';
 import { supabase } from '../../lib/supabaseClient';
 import { ProgressionChart } from '@/components/progression-chart/ProgressionChart';
+import Link from 'next/link';
+import cslx from 'clsx';
 
 export const metadata = {
     title: 'Competition Results - Emma Turinsky',
@@ -26,14 +27,18 @@ export const metadata = {
     },
 };
 
-async function getLatestLevel() {
+async function getAvailableLevels() {
     const { data, error } = await supabase
         .from('competitions')
         .select('level')
-        .order('level', { ascending: false })
-        .limit(1);
+        .order('level', { ascending: false });
 
-    return data[0]?.level;
+    if (error) {
+        console.error('Error fetching available levels:', error);
+        return [];
+    }
+
+    return [...new Set(data.map((item) => item.level))];
 }
 
 async function getScores(level) {
@@ -49,14 +54,39 @@ async function getScores(level) {
 // TODO: Add unhappy path for when there are no scores for a level. Right now it just shows an empty table.
 export default async function Page({ searchParams }) {
     const queryLevel = (await searchParams).level;
-    const level =
-        typeof queryLevel === 'string'
-            ? parseInt(queryLevel)
-            : await getLatestLevel();
+    const levels = await getAvailableLevels();
+    let level = typeof queryLevel === 'string' ? parseInt(queryLevel) : null;
+
+    if (!level) {
+        level = levels.length > 0 ? levels[0] : null;
+    }
+
     const scores = await getScores(level);
 
     return (
         <main className="w-full flex flex-col gap-4 py-4 px-6 text-white">
+            <div className="w-full flex justify-center">
+                <nav className="bg-white px-2 py-2 rounded-lg">
+                    <ul className="flex flex-row gap-4">
+                        {levels.map((lvl) => (
+                            <li>
+                                <Link
+                                    key={lvl}
+                                    href={`/results?level=${lvl}`}
+                                    className={cslx(
+                                        'text-black',
+                                        lvl === level
+                                            ? 'underline underline-offset-2 decoration-2'
+                                            : ''
+                                    )}
+                                >
+                                    Level {lvl}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </div>
             <div className="flex flex-col gap-4 py-4 px-6 bg-white rounded-lg">
                 <div className="grow px-4">
                     <h1
@@ -79,7 +109,7 @@ export default async function Page({ searchParams }) {
                                 )}
                             />
                         </section>
-                        <section className="flex flex-col overflow-x-auto justify-center mt-4 shadow-md">
+                        <section className="flex flex-col overflow-x-auto justify-center mt-4">
                             <h3
                                 id={'lvl' + level + '-results'}
                                 className="text-black text-xl font-bold text-start mb-1"
