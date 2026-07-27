@@ -97,7 +97,7 @@ export function ProgressionChart({ scores }) {
     };
 
     return (
-        <div className="w-full h-auto bg-white flex flex-col gap-1 p-2 shadow-md rounded-lg">
+        <div className="w-full h-auto bg-white flex flex-col gap-1 p-2 shadow-md rounded-lg justify-center">
             <div className="flex self-end items-center gap-x-2">
                 <label
                     className="text-black font-medium"

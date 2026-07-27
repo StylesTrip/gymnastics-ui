@@ -90,7 +90,7 @@ export default async function Page({ searchParams }) {
                 <div className="grow px-4">
                     <h1
                         id={'lvl' + level}
-                        className="text-black text-2xl font-bold"
+                        className="text-black text-3xl font-bold"
                     >
                         Level {level}
                     </h1>
@@ -123,7 +123,7 @@ export default async function Page({ searchParams }) {
                         </section>
                     </div>
                 </div>
-                <div className="px-4">
+                <div className="px-4 w-full max-w-4xl">
                     <h3
                         id={'lvl' + level + '-progression'}
                         className="text-black text-xl font-bold text-start mb-1"
