@@ -84,7 +84,7 @@ export function ProgressionChart({ scores }) {
                 {
                     label: selectedEvent.label,
                     data: dataset,
-                    borderColor: 'rgb(75, 192, 192)',
+                    borderColor: '#9615DB',
                 },
             ],
         };
@@ -120,7 +120,14 @@ export function ProgressionChart({ scores }) {
                 </select>
             </div>
             <Line
-                options={{ responsive: true }}
+                options={{
+                    responsive: true,
+                    plugins: { legend: { labels: { color: '#000000' } } },
+                    scales: {
+                        x: { ticks: { color: '#000000' } },
+                        y: { ticks: { color: '#000000' } },
+                    },
+                }}
                 data={getDataToDisplay()}
                 aria-label={`Season progression scores for ${selectedEvent.label}`}
             />
