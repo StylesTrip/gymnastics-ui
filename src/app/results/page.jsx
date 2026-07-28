@@ -72,6 +72,7 @@ export default async function Page({ searchParams }) {
                             <li key={lvl}>
                                 <Link
                                     href={`/results?level=${lvl}`}
+                                    aria-current={lvl === level ? 'page' : undefined}
                                     className={cslx(
                                         'text-black',
                                         lvl === level
