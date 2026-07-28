@@ -97,10 +97,10 @@ export function ProgressionChart({ scores }) {
     };
 
     return (
-        <div className="w-full h-auto bg-white flex flex-col gap-1 p-2 shadow-md rounded-lg justify-center">
+        <div className="w-full max-w-4xl h-auto bg-white flex flex-col gap-1 p-2 shadow-md rounded-lg self-center">
             <div className="flex self-end items-center gap-x-2">
                 <label
-                    className="text-black font-medium"
+                    className="text-black font-medium text-sm"
                     id="event-label"
                     htmlFor="event-select"
                 >
@@ -109,7 +109,7 @@ export function ProgressionChart({ scores }) {
                 <select
                     id="event-select"
                     value={selectedEvent.key}
-                    className="text-black block w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+                    className="text-black text-sm block w-fit rounded p-1 pr-0 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                     onChange={handleEventChange}
                 >
                     {events.map((event) => (

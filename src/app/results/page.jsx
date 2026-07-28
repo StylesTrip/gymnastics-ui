@@ -123,10 +123,10 @@ export default async function Page({ searchParams }) {
                         </section>
                     </div>
                 </div>
-                <div className="px-4 w-full max-w-4xl">
+                <div className="px-4 w-full flex flex-col gap-1">
                     <h3
                         id={'lvl' + level + '-progression'}
-                        className="text-black text-xl font-bold text-start mb-1"
+                        className="text-black text-xl font-bold text-start"
                     >
                         Season Progression
                     </h3>
