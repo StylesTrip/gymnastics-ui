@@ -54,6 +54,9 @@ export const PersonalBestTable = ({ scores }) => {
 
     return (
         <table className="table-auto w-full">
+            <caption className="sr-only">
+                Personal best scores for each event for the current selected level
+            </caption>
             <thead className="bg-primary-table-header-background">
                 <tr className="border text-black">
                     <th className="border px-2 pt-2 text-sm">Vault</th>

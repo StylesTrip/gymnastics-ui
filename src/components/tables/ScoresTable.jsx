@@ -87,6 +87,9 @@ export const ScoresTable = ({ scores }) => {
                         className="md:hidden table-auto border mb-2"
                         key={key}
                     >
+                        <caption className="sr-only">
+                            Scores for each event for the current selected level
+                        </caption>
                         <MobileTableheader score={score} />
                         <tbody className="bg-white text-black">
                             <tr
@@ -137,6 +140,9 @@ export const ScoresTable = ({ scores }) => {
                 );
             })}
             <table className="hidden md:table table-auto border">
+                <caption className="sr-only">
+                    Scores for each event for the current selected level
+                </caption>
                 <TableHeader />
                 <tbody className="border text-black">
                     {scores.map((score, key) => {
