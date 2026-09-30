@@ -1,4 +1,5 @@
 import { PersonalBestTable } from '@/components/tables/PersonalBestTable';
+import { PersonalBestsDisplay } from '@/components/personal-bests/PersonalBestsDisplay';
 import { ScoresTable } from '@/components/tables/ScoresTable';
 import { supabase } from '../../lib/supabaseClient';
 import { ProgressionChart } from '@/components/progression-chart/ProgressionChart';
@@ -110,7 +111,12 @@ export default async function Page({ searchParams }) {
                         >
                             Personal Best
                         </h3>
-                        <PersonalBestTable
+                        {/* <PersonalBestTable
+                            scores={scores.filter(
+                                (score) => score.level === level
+                            )}
+                        /> */}
+                        <PersonalBestsDisplay
                             scores={scores.filter(
                                 (score) => score.level === level
                             )}

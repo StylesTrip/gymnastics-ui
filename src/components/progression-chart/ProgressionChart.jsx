@@ -59,6 +59,29 @@ export const data = {
     ],
 };
 
+function lineColor(event) {
+    let color = 'text-black';
+
+    switch (event) {
+        case 'Vault':
+            color = '#00274C';
+            break;
+        case 'Bars':
+            color = '#BB0000';
+            break;
+        case 'Beam':
+            color = '#CC4500';
+            break;
+        case 'Floor':
+            color = '#660033';
+            break;
+        case 'All Around':
+            color = '#8B008B';
+            break;
+    }
+    return color;
+}
+
 // TODO: Add unhappy path for when there are no scores for a level
 export function ProgressionChart({ scores }) {
     const competitionLabels = useMemo(
@@ -84,7 +107,7 @@ export function ProgressionChart({ scores }) {
                 {
                     label: selectedEvent.label,
                     data: dataset,
-                    borderColor: '#9615DB',
+                    borderColor: lineColor(selectedEvent.label),
                 },
             ],
         };
