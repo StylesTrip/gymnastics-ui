@@ -147,7 +147,7 @@ export function ProgressionChart({ scores }) {
                     responsive: true,
                     plugins: { legend: { labels: { color: '#000000' } } },
                     scales: {
-                        x: { ticks: { color: '#000000' } },
+                        x: { ticks: { color: '#000000', callback: (_value, index) => competitionLabels[index].split(' ')[0] } },
                         y: { ticks: { color: '#000000' } },
                     },
                 }}
