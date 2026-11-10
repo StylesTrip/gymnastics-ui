@@ -1,34 +1,35 @@
+import { getHighScores } from '../../lib/utils';
+import cslx from 'clsx';
+
+const TableHeader = () => {
+    return (
+        <thead className="border bg-primary-table-header-background">
+            <tr className="border text-black">
+                <th className="border px-2 pt-2 text-sm">Competition</th>
+                <th className="border px-2 pt-2 text-sm">Vault</th>
+                <th className="border px-2 pt-2 text-sm">Uneven Bars</th>
+                <th className="border px-2 pt-2 text-sm">Beam</th>
+                <th className="border px-2 pt-2 text-sm">Floor</th>
+                <th className="border px-2 pt-2 text-sm">All Around</th>
+            </tr>
+        </thead>
+    );
+};
+
+const MobileTableheader = ({ score }) => {
+    return (
+        <thead className="border bg-primary-table-header-background">
+            <tr>
+                <th colSpan={2} className="border px-2 pt-2 text-black text-sm">
+                    {score.competition_name}
+                </th>
+            </tr>
+        </thead>
+    );
+};
+
 export const ScoresTable = ({ scores }) => {
-    const TableHeader = () => {
-        return (
-            <thead className="border bg-primary-table-header-background">
-                <tr className="border text-black">
-                    <th className="border px-2 pt-2 text-sm">Competition</th>
-                    <th className="border px-2 pt-2 text-sm">Vault</th>
-                    <th className="border px-2 pt-2 text-sm">Uneven Bars</th>
-                    <th className="border px-2 pt-2 text-sm">Beam</th>
-                    <th className="border px-2 pt-2 text-sm">Floor</th>
-                    <th className="border px-2 pt-2 text-sm">All Around</th>
-                </tr>
-            </thead>
-        );
-    };
-
-    const MobileTableheader = ({ score }) => {
-        return (
-            <thead className="border bg-primary-table-header-background">
-                <tr>
-                    <th
-                        colSpan={2}
-                        className="border px-2 pt-2 text-black text-sm"
-                    >
-                        {score.competition_name}
-                    </th>
-                </tr>
-            </thead>
-        );
-    };
-
+    const highScores = getHighScores(scores);
     if (!scores) {
         return (
             <>
@@ -158,19 +159,54 @@ export const ScoresTable = ({ scores }) => {
                                 <td className="border p-2 text-sm">
                                     {score.competition_name}
                                 </td>
-                                <td className="border text-center text-sm">
+                                <td
+                                    className={cslx(
+                                        'border text-center text-sm',
+                                        highScores.vaultScore ===
+                                            score.scores[0].vault_score &&
+                                            'font-bold'
+                                    )}
+                                >
                                     {score.scores[0].vault_score}
                                 </td>
-                                <td className="border text-center text-sm">
+                                <td
+                                    className={cslx(
+                                        'border text-center text-sm',
+                                        highScores.barsScore ===
+                                            score.scores[0].bars_score &&
+                                            'font-bold'
+                                    )}
+                                >
                                     {score.scores[0].bars_score}
                                 </td>
-                                <td className="border text-center text-sm">
+                                <td
+                                    className={cslx(
+                                        'border text-center text-sm',
+                                        highScores.beamScore ===
+                                            score.scores[0].beam_score &&
+                                            'font-bold'
+                                    )}
+                                >
                                     {score.scores[0].beam_score}
                                 </td>
-                                <td className="border text-center text-sm">
+                                <td
+                                    className={cslx(
+                                        'border text-center text-sm',
+                                        highScores.floorScore ===
+                                            score.scores[0].floor_score &&
+                                            'font-bold'
+                                    )}
+                                >
                                     {score.scores[0].floor_score}
                                 </td>
-                                <td className="border text-center text-sm">
+                                <td
+                                    className={cslx(
+                                        'border text-center text-sm',
+                                        highScores.allAroundScore ===
+                                            score.scores[0].all_around_score &&
+                                            'font-bold'
+                                    )}
+                                >
                                     {score.scores[0].all_around_score}
                                 </td>
                             </tr>
