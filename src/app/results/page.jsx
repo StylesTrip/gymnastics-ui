@@ -46,9 +46,10 @@ async function getScores(level) {
     const { data, error } = await supabase
         .from('competitions')
         .select(
-            'competition_name, level, scores(vault_score, bars_score, beam_score, floor_score, all_around_score)'
+            'competition_name, level, competition_date, scores(vault_score, bars_score, beam_score, floor_score, all_around_score)'
         )
-        .eq('level', level);
+        .eq('level', level)
+        .order('competition_date', { ascending: true });
 
     if (error) {
         console.error('Error fetching scores:', error);
@@ -58,7 +59,6 @@ async function getScores(level) {
     return data;
 }
 
-// TODO: Add unhappy path for when there are no scores for a level. Right now it just shows an empty table.
 export default async function Page({ searchParams }) {
     const queryLevel = (await searchParams).level;
     const levels = await getAvailableLevels();
@@ -69,6 +69,10 @@ export default async function Page({ searchParams }) {
     }
 
     const scores = await getScores(level);
+
+    function getSeasonYear(competitionDate) {
+        return competitionDate.split('-')[0];
+    }
 
     return (
         <main className="w-full flex flex-col gap-4 py-4 px-0 sm:px-6">
@@ -104,6 +108,9 @@ export default async function Page({ searchParams }) {
                     >
                         Level {level}
                     </h1>
+                    <p className="text-black text-sm mt-[-8px]">
+                        {getSeasonYear(scores[0].competition_date)} - {getSeasonYear(scores[scores.length - 1].competition_date)} Season
+                    </p>
                     <section className="flex flex-col overflow-x-auto justify-center mt-4 gap-1">
                         <h3
                             id={'lvl' + level + '-personal-best'}
@@ -136,7 +143,7 @@ export default async function Page({ searchParams }) {
                             id={'lvl' + level + '-results'}
                             className="text-black text-xl font-bold text-start mb-1"
                         >
-                            Results
+                            Competition Results
                         </h3>
                         <ScoresTable
                             scores={scores.filter(
