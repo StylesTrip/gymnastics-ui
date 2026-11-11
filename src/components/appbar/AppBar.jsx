@@ -25,7 +25,7 @@ export default function AppBar({
         <nav
             className={clsx(
                 'flex justify-between items-center px-4 py-2 relative after:absolute after:bottom-0 after:left-[1%] after:h-[3px] after:w-[98%] after:rounded-full after:bg-secondary-purple',
-                variant === 'filled' && 'primary-app-bar',
+                variant === 'filled' && 'bg-primary-app-bar',
                 variant === 'transparent' && 'bg-transparent'
             )}
         >

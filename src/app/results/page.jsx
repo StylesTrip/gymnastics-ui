@@ -76,8 +76,23 @@ export default async function Page({ searchParams }) {
 
     return (
         <main className="w-full flex flex-col gap-4 py-4 px-0 sm:px-6">
-            <div className="w-full flex justify-center">
-                <nav className="bg-white px-2 py-2 rounded-lg">
+            <div className="w-full flex justify-between">
+                <div className="flex flex-col gap-1">
+                     <h1
+                        id={'lvl' + level}
+                        className="text-white text-3xl font-bold"
+                    >
+                        Level {level}
+                    </h1>
+                    <p className="text-white text-sm mt-[-8px]">
+                        {getSeasonYear(scores[0].competition_date)} -{' '}
+                        {getSeasonYear(
+                            scores[scores.length - 1].competition_date
+                        )}{' '}
+                        Season
+                    </p>
+                </div>
+                <nav className="px-2 py-2 rounded-lg">
                     <ul className="flex flex-row gap-4">
                         {levels.map((lvl) => (
                             <li key={lvl}>
@@ -87,9 +102,9 @@ export default async function Page({ searchParams }) {
                                         lvl === level ? 'page' : undefined
                                     }
                                     className={cslx(
-                                        'text-black',
+                                        'text-white',
                                         lvl === level
-                                            ? 'underline underline-offset-2 decoration-2'
+                                            ? 'underline decoration-secondary-purple underline-offset-4 decoration-2'
                                             : ''
                                     )}
                                 >
@@ -101,17 +116,21 @@ export default async function Page({ searchParams }) {
                 </nav>
             </div>
             {scores.length > 0 ? (
-                <div className="flex flex-col gap-4 py-4 px-6 bg-white rounded-lg">
-                    <h1
+                <div className="flex flex-col gap-6 py-2 px-6 bg-white rounded-lg">
+                    {/* <h1
                         id={'lvl' + level}
                         className="text-black text-3xl font-bold"
                     >
                         Level {level}
                     </h1>
                     <p className="text-black text-sm mt-[-8px]">
-                        {getSeasonYear(scores[0].competition_date)} - {getSeasonYear(scores[scores.length - 1].competition_date)} Season
-                    </p>
-                    <section className="flex flex-col overflow-x-auto justify-center mt-4 gap-1">
+                        {getSeasonYear(scores[0].competition_date)} -{' '}
+                        {getSeasonYear(
+                            scores[scores.length - 1].competition_date
+                        )}{' '}
+                        Season
+                    </p> */}
+                    <section className="flex flex-col overflow-x-auto justify-center gap-1">
                         <h3
                             id={'lvl' + level + '-personal-best'}
                             className="text-black text-xl font-bold text-start"

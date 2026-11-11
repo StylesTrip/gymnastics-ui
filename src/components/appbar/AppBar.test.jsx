@@ -22,7 +22,7 @@ describe('AppBar', () => {
         render(<AppBar variant="filled" />);
 
         expect(screen.getByRole('navigation')).toHaveClass(
-            'bg-secondary-purple'
+            'bg-primary-app-bar'
         );
     });
 
